@@ -81,14 +81,13 @@ class MyAccountController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'firstname'=>'required',
+            'name'=>'required',
             'email'=>'required',
             'phone'=>'required',
         ]);
 
         $user = User::find($id);
-        $user->firstname = $request->firstname;
-        $user->lastname = $request->lastname;
+        $user->name = $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
 

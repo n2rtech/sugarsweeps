@@ -7,11 +7,9 @@ use App\Models\Cashier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
-
     use AuthenticatesUsers;
 
     public function __construct()
@@ -32,12 +30,6 @@ class LoginController extends Controller
             'password' => 'required|min:6'
         ]);
 
-        $cashier = Cashier::where($this->username(), '=', $request->input($this->username()))->first();
-
-        if ($cashier && $cashier->status == 'inactive') {
-            throw ValidationException::withMessages([$this->username() => __('The account is Inactive. Please Contact Administrator')]);
-        }
-
         // Attempt to log the user in
         if(Auth::guard('cashier')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember))
         {
@@ -45,20 +37,24 @@ class LoginController extends Controller
 
         }else{
 
-         return $this->sendFailedLoginResponse($request);
-     }
+           return $this->sendFailedLoginResponse($request);
+       }
 
- }
+   }
 
+   /**
+     * Log the user out of the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function logout(Request $request)
     {
 
-        Auth::guard('cashier')->logout();
-
-        $request->session()->flush();
-
-        $request->session()->regenerate();
-
-        return redirect()->route( 'cashier.login' );
+        if(Auth::guard('cashier')->check()) // this means that the admin was logged in.
+        {
+            Auth::guard('cashier')->logout();
+            return redirect()->route('cashier.login');
+        }
     }
 }

@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Cashier\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\Cashier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Cashier;
 
 class ChangePasswordController extends Controller
 {
@@ -19,7 +19,7 @@ class ChangePasswordController extends Controller
     {
         $id = Auth::guard('cashier')->id();
         $user = Cashier::find($id);
-        return view('cashier.auth.change-password', compact('user'));
+        return view('cashier.settings.change-password', compact('user'));
     }
 
     public function changePassword(Request $request)

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Cashier\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Models\Cashier;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -49,7 +49,7 @@ class MyAccountController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Admin  $admin
+     * @param  \App\Models\Superadmin  $admin
      * @return \Illuminate\Http\Response
      */
     public function show(Cashier $cashier)
@@ -60,22 +60,22 @@ class MyAccountController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Admin  $admin
+     * @param  \App\Models\Superadmin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cashier $cashier)
+    public function edit(Cashier $admin)
     {
-        $id = Auth::guard('cashier')->id();
-        $cashier = Cashier::find($id);
-        $cashier->avatar = isset($cashier->avatar) ? asset('storage/uploads/cashier/'.$cashier->avatar) : URL::to('assets/img/profile-picture.jpg') ;
-        return view('cashier.auth.my-account', compact('cashier'));
+        $id             = Auth::guard('cashier')->id();
+        $admin          = Cashier::find($id);
+        $admin->avatar  = isset($admin->avatar) ? asset('storage/uploads/cashier/'.$admin->avatar) : URL::to('assets/images/profile/user-uploads/user-00.png') ;
+        return view('cashier.settings.my-account', compact('admin'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Admin  $admin
+     * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -85,40 +85,40 @@ class MyAccountController extends Controller
             'email'=>'required',
         ]);
 
-        $cashier = Cashier::find($id);
-        $cashier->name = $request->name;
-        $cashier->email = $request->email;
-        $cashier->phone = $request->phone;
+        $admin          = Cashier::find($id);
+        $admin->name    = $request->name;
+        $admin->email   = $request->email;
+        $admin->phone   = $request->phone;
 
         if($request->hasfile('avatar')){
 
-            $image = $request->file('avatar');
+            $image      = $request->file('avatar');
 
-            $name = $image->getClientOriginalName();
+            $name       = $image->getClientOriginalName();
 
-            $image->storeAs('uploads/cashier/', $name, 'public');
+            $image->storeAs('uploads/admin/', $name, 'public');
 
-            if(isset($cashier->avatar)){
+            if(isset($admin->avatar)){
 
-                $path = 'public/uploads/cashier/'.$cashier->avatar;
+                $path   = 'public/uploads/admin/'.$admin->avatar;
 
                 Storage::delete($path);
 
             }
 
-            $cashier->avatar = $name;
+            $admin->avatar = $name;
 
         }
 
-        $cashier->save();
+        $admin->save();
 
-        return redirect()->route('cashier.my-account.edit', $cashier->id)->with('success', 'Account updated successfully!');
+        return redirect()->route('cashier.my-account.edit', $admin->id)->with('success', 'Account updated successfully!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Admin  $admin
+     * @param  \App\Models\Superadmin  $admin
      * @return \Illuminate\Http\Response
      */
     public function destroy(Cashier $cashier)

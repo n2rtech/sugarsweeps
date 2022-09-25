@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
-
     use AuthenticatesUsers;
 
     public function __construct()
@@ -51,13 +51,10 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
 
-        Auth::guard('admin')->logout();
-
-        $request->session()->flush();
-
-        $request->session()->regenerate();
-
-        return redirect()->route( 'admin.login' );
+        if(Auth::guard('admin')->check()) // this means that the admin was logged in.
+        {
+            Auth::guard('admin')->logout();
+            return redirect()->route('admin.login');
+        }
     }
-
 }

@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Validator;
 use App\Models\Admin;
 
 class ChangePasswordController extends Controller
@@ -20,7 +19,7 @@ class ChangePasswordController extends Controller
     {
         $id = Auth::guard('admin')->id();
         $user = Admin::find($id);
-        return view('admin.auth.change-password', compact('user'));
+        return view('admin.settings.change-password', compact('user'));
     }
 
     public function changePassword(Request $request)

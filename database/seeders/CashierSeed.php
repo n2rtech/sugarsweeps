@@ -16,8 +16,7 @@ class CashierSeed extends Seeder
     public function run()
     {
         Cashier::create([
-            'firstname' => 'Michael',
-            'lastname' => 'Scofield',
+            'name' => 'Lincon Thomas',
             'phone' => '9854786582',
             'email' => 'cashier@admin.com',
             'password' => Hash::make('password')

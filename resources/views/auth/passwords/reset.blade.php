@@ -1,7 +1,7 @@
-@extends('layouts.app')
-@section('title', 'Reset Password')
+@extends('layouts.front')
+@section('title', 'Reset Password | SugarSweeps')
 @section('content')
-<div class="container">
+<section id="reset-password" class="reset-password">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -61,5 +61,5 @@
             </div>
         </div>
     </div>
-</div>
+</section>
 @endsection

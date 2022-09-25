@@ -49,10 +49,10 @@ class MyAccountController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Admin  $admin
+     * @param  \App\Models\Superadmin  $admin
      * @return \Illuminate\Http\Response
      */
-    public function show(Admin $admin)
+    public function show(Superadmin $admin)
     {
         //
     }
@@ -60,49 +60,47 @@ class MyAccountController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Admin  $admin
+     * @param  \App\Models\Superadmin  $admin
      * @return \Illuminate\Http\Response
      */
     public function edit(Admin $admin)
     {
-        $id = Auth::guard('admin')->id();
-        $admin = Admin::find($id);
-        $admin->avatar = isset($admin->avatar) ? asset('storage/uploads/admin/'.$admin->avatar) : URL::to('assets/img/profile-picture.jpg') ;
-        return view('admin.auth.my-account', compact('admin'));
+        $id             = Auth::guard('admin')->id();
+        $admin          = Admin::find($id);
+        $admin->avatar  = isset($admin->avatar) ? asset('storage/uploads/admin/'.$admin->avatar) : URL::to('assets/images/profile/user-uploads/user-00.png') ;
+        return view('admin.settings.my-account', compact('admin'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Admin  $admin
+     * @param  \App\Models\Admin  $admin
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'firstname'=>'required',
+            'name'=>'required',
             'email'=>'required',
-            'mobile'=>'required',
         ]);
 
-        $admin = Admin::find($id);
-        $admin->firstname = $request->firstname;
-        $admin->lastname = $request->lastname;
-        $admin->email = $request->email;
-        $admin->mobile = $request->mobile;
+        $admin          = Admin::find($id);
+        $admin->name    = $request->name;
+        $admin->email   = $request->email;
+        $admin->phone   = $request->phone;
 
         if($request->hasfile('avatar')){
 
-            $image = $request->file('avatar');
+            $image      = $request->file('avatar');
 
-            $name = $image->getClientOriginalName();
+            $name       = $image->getClientOriginalName();
 
             $image->storeAs('uploads/admin/', $name, 'public');
 
             if(isset($admin->avatar)){
 
-                $path = 'public/uploads/admin/'.$admin->avatar;
+                $path   = 'public/uploads/admin/'.$admin->avatar;
 
                 Storage::delete($path);
 
@@ -120,7 +118,7 @@ class MyAccountController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Admin  $admin
+     * @param  \App\Models\Superadmin  $admin
      * @return \Illuminate\Http\Response
      */
     public function destroy(Admin $admin)

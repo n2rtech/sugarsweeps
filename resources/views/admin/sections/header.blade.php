@@ -1,118 +1,79 @@
-    <!-- Navigation Bar -->
-    <nav class="navbar ms-navbar">
-
-        <div class="ms-aside-toggler ms-toggler pl-0" data-target="#ms-side-nav" data-toggle="slideLeft">
-            <span class="ms-toggler-bar bg-primary"></span>
-            <span class="ms-toggler-bar bg-primary"></span>
-            <span class="ms-toggler-bar bg-primary"></span>
-        </div>
-
-        <div class="logo-sn logo-sm ms-d-block-sm">
-            <a class="pl-0 ml-0 text-center navbar-brand mr-0" href="{{ route('admin.dashboard') }}">
-                <img src="{{ asset('assets/img/Logo.png') }}" alt="Logo" class="img-responsive">
-            </a>
-        </div>
-
-        <ul class="ms-inline mb-0" id="ms-nav-options">
-            @php
-                $admin_notifications = getLatestAdminNotifications();
-            @endphp
-            <li class="ms-nav-item dropdown notification-list">
-                @if(count($admin_notifications) > 0)
-                <a href="#" class="text-white" id="notificationDropdown"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flaticon-bell"></i>
-                    <span id="notification-count" class="text-center"></span>
-                </a>
-                @else
-                <a href="#" class="text-white" id="notificationDropdown"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flaticon-bell"></i></a>
-                @endif
-
-                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="notificationDropdown">
-                    <li class="dropdown-menu-header">
-                        <h6 class="dropdown-header ms-inline m-0 text-center"><span class="text-disabled">Notifications</span></h6>
-                    </li>
-                    <li class="dropdown-divider"></li>
-                    <li class="ms-scrollable ms-dropdown-list">
-
-                        @foreach ($admin_notifications as $notification)
-                            <a class="media p-2" href="javascript:void(0)">
-                                <div class="media-body">
-                                    @if ($notification->type == 'request-account')
-                                        <span>{{ $notification->user->firstname }}
-                                                {{ $notification->user->lastname }} has requested
-                                            {{ $notification->data->platform->platform }} account. </span>
-                                    @endif
-
-                                    @if ($notification->type == 'credit-requested')
-                                        <span>{{ $notification->user->firstname }}
-                                                {{ $notification->user->lastname }}'s
-                                            {{ $notification->data->platform->platform }} account has been credited with
-                                            ${{ $notification->data->amount }} credit. </span>
-                                    @endif
-
-                                    @if ($notification->type == 'redeem-request')
-                                        <span>{{ $notification->user->firstname }} {{ $notification->user->lastname }} has requested to redeem @if($notification->data->redeem_full == "yes") all  @else worth ${{ $notification->data->amount }} @endif credits from {{ $notification->data->platform->platform }} account.</span>
-                                    @endif
-                                    <p class="fs-10 my-1 text-disabled"><i class="material-icons">access_time</i> {{$notification->created_at->diffForHumans()}}</p>
+<nav class="header-navbar navbar-expand-lg navbar navbar-with-menu floating-nav navbar-light navbar-shadow">
+    <div class="navbar-wrapper">
+        <div class="navbar-container content">
+            <div class="navbar-collapse" id="navbar-mobile">
+                <div class="mr-auto float-left bookmark-wrapper d-flex align-items-center">
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item mobile-menu d-xl-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ficon feather icon-menu"></i></a></li>
+                    </ul>
+                </div>
+                <ul class="nav navbar-nav float-right">
+                    <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-expand"><i class="ficon feather icon-maximize"></i></a></li>
+                    <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon feather icon-bell"></i><span class="badge badge-pill badge-primary badge-up">5</span></a>
+                        <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
+                            <li class="dropdown-menu-header">
+                                <div class="dropdown-header m-0 p-2">
+                                    <h3 class="white">5 New</h3><span class="notification-title">App Notifications</span>
                                 </div>
-                            </a>
-                        @endforeach
+                            </li>
+                            <li class="scrollable-container media-list"><a class="d-flex justify-content-between" href="javascript:void(0)">
+                                    <div class="media d-flex align-items-start">
+                                        <div class="media-left"><i class="feather icon-plus-square font-medium-5 primary"></i></div>
+                                        <div class="media-body">
+                                            <h6 class="primary media-heading">You have new order!</h6><small class="notification-text"> Are your going to meet me tonight?</small>
+                                        </div><small>
+                                            <time class="media-meta" datetime="2015-06-11T18:29:20+08:00">9 hours ago</time></small>
+                                    </div>
+                                </a><a class="d-flex justify-content-between" href="javascript:void(0)">
+                                    <div class="media d-flex align-items-start">
+                                        <div class="media-left"><i class="feather icon-download-cloud font-medium-5 success"></i></div>
+                                        <div class="media-body">
+                                            <h6 class="success media-heading red darken-1">99% Server load</h6><small class="notification-text">You got new order of goods.</small>
+                                        </div><small>
+                                            <time class="media-meta" datetime="2015-06-11T18:29:20+08:00">5 hour ago</time></small>
+                                    </div>
+                                </a><a class="d-flex justify-content-between" href="javascript:void(0)">
+                                    <div class="media d-flex align-items-start">
+                                        <div class="media-left"><i class="feather icon-alert-triangle font-medium-5 danger"></i></div>
+                                        <div class="media-body">
+                                            <h6 class="danger media-heading yellow darken-3">Warning notifixation</h6><small class="notification-text">Server have 99% CPU usage.</small>
+                                        </div><small>
+                                            <time class="media-meta" datetime="2015-06-11T18:29:20+08:00">Today</time></small>
+                                    </div>
+                                </a><a class="d-flex justify-content-between" href="javascript:void(0)">
+                                    <div class="media d-flex align-items-start">
+                                        <div class="media-left"><i class="feather icon-check-circle font-medium-5 info"></i></div>
+                                        <div class="media-body">
+                                            <h6 class="info media-heading">Complete the task</h6><small class="notification-text">Cake sesame snaps cupcake</small>
+                                        </div><small>
+                                            <time class="media-meta" datetime="2015-06-11T18:29:20+08:00">Last week</time></small>
+                                    </div>
+                                </a><a class="d-flex justify-content-between" href="javascript:void(0)">
+                                    <div class="media d-flex align-items-start">
+                                        <div class="media-left"><i class="feather icon-file font-medium-5 warning"></i></div>
+                                        <div class="media-body">
+                                            <h6 class="warning media-heading">Generate monthly report</h6><small class="notification-text">Chocolate cake oat cake tiramisu marzipan</small>
+                                        </div><small>
+                                            <time class="media-meta" datetime="2015-06-11T18:29:20+08:00">Last month</time></small>
+                                    </div>
+                                </a></li>
+                            <li class="dropdown-menu-footer"><a class="dropdown-item p-1 text-center" href="javascript:void(0)">Read all notifications</a></li>
+                        </ul>
                     </li>
-                    @if(count($admin_notifications) > 0)
-                    <li class="dropdown-divider"></li>
-                    <li class="dropdown-menu-footer text-center">
-
-                        <a href="{{ route('admin.notification-center.index') }}">View all Notifications</a>
+                    <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
+                            <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600">{{ Auth::guard('admin')->user()->name }}</span><span class="user-status">Available</span></div><span><img class="round" src="{{ asset('assets/images/portrait/small/avatar-s-11.jpg') }}" alt="avatar" height="40" width="40"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="{{ route('admin.my-account.edit', Auth::guard('admin')->id()) }}"><i class="feather icon-user"></i> My Account</a>
+                            <a class="dropdown-item" href="{{ route('admin.password.form') }}"><i class="feather icon-lock"></i> Change Password</a>
+                            <div class="dropdown-divider"></div><a class="dropdown-item"href="{{ route('admin.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" ><i class="feather icon-power"></i> Logout</a>
+                            <form id="logout-form" action="{{ 'App\Models\Admin' == Auth::getProvider()->getModel() ? route('admin.logout') : route('admin.logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </div>
                     </li>
-                    @else
-                    <li class="dropdown-menu-footer text-center">
-                    <p>No New Notification</p>
-                    </li>
-                    @endif
                 </ul>
-            </li>
-
-            <li class="ms-nav-item ms-nav-user dropdown">
-                <a href="#" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="ms-user-img ms-img-round float-right" src="{{ asset('assets/img/avatar.png') }}"
-                        alt="people"> </a>
-                <ul class="dropdown-menu dropdown-menu-right user-dropdown" aria-labelledby="userDropdown">
-                    <li class="dropdown-menu-header">
-                        <h6 class="dropdown-header ms-inline m-0"><span class="text-disabled">Welcome
-                                {{ Auth::guard('admin')->user()->firstname }}
-                                {{ Auth::guard('admin')->user()->lastname }}</span></h6>
-                    </li>
-                    <li class="dropdown-divider"></li>
-                    <li class="ms-dropdown-list">
-                        <a class="media fs-14 p-2"
-                            href="{{ route('admin.my-account.edit', Auth::guard('admin')->id()) }}"> <span><i
-                                    class="flaticon-gear mr-2"></i> My Account</span> </a>
-                    </li>
-                    <li class="dropdown-menu-footer">
-                        <a class="media fs-14 p-2" href="{{ route('admin.password.form') }}"> <span><i
-                                    class="flaticon-security mr-2"></i> Change Password</span> </a>
-                    </li>
-                    <li class="dropdown-divider"></li>
-
-                    <li class="dropdown-menu-footer">
-                        <a class="media fs-14 p-2" href="{{ route('logout') }}"
-                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <span><i
-                                    class="flaticon-shut-down mr-2"></i> Logout</span> </a>
-                        <form id="logout-form"
-                            action="{{ 'App\Models\Admin' == Auth::getProvider()->getModel() ? route('admin.logout') : route('logout') }}"
-                            method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-
-        <!-- <div class="ms-toggler ms-d-block-sm pr-0 ms-nav-toggler" data-toggle="slideDown" data-target="#ms-nav-options">
-            <span class="ms-toggler-bar bg-primary"></span>
-            <span class="ms-toggler-bar bg-primary"></span>
-            <span class="ms-toggler-bar bg-primary"></span>
-        </div> -->
-
-    </nav>
+            </div>
+        </div>
+    </div>
+</nav>

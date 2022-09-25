@@ -1,90 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>@yield('title')</title>
-  <!-- Iconic Fonts -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="{{asset('vendors/iconic-fonts/font-awesome/css/all.min.css')}}" rel="stylesheet">
-  <link rel="stylesheet" href="{{asset('vendors/iconic-fonts/flat-icons/flaticon.css')}}">
-  <link rel="stylesheet" href="{{asset('vendors/iconic-fonts/cryptocoins/cryptocoins.css')}}">
-  <link rel="stylesheet" href="{{asset('vendors/iconic-fonts/cryptocoins/cryptocoins-colors.css')}}">
-  <!-- Bootstrap core CSS -->
-  <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet">
-  <!-- jQuery UI -->
-  <link href="{{asset('assets/css/jquery-ui.min.css')}}" rel="stylesheet">
-  <!-- Page Specific CSS (Slick Slider.css) -->
-  <link href="{{asset('assets/css/slick.css')}}" rel="stylesheet">
-  @yield('head')
-  <!-- Greendash styles -->
-  <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
-   <!-- Icon styles -->
-   <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet">
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="{{asset('favicon.png')}}">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="Cashier Dashboard">
+    <meta name="keywords" content="Cashier Dashboard">
+    <meta name="author" content="Cashier">
+    <title>@yield('title')</title>
+    <link rel="apple-touch-icon" href="{{ asset('assets/images/ico/apple-icon-120.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/ico/favicon.ico') }}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/css/vendors.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/css/charts/apexcharts.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/css/extensions/tether-theme-arrows.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/css/extensions/tether.min.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ asset('assets/vendors/css/extensions/shepherd-theme-default.css') }}">
+    <!-- END: Vendor CSS-->
+
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap-extended.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/colors.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/components.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/themes/dark-layout.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/themes/semi-dark-layout.css') }}">
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/core/menu/menu-types/vertical-menu.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/core/colors/palette-gradient.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/pages/dashboard-analytics.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/pages/card-analytics.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/plugins/tour/tour.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/plugins/forms/validation/form-validation.css') }}">
+    <!-- END: Page CSS-->
+
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
+    <!-- END: Custom CSS-->
+    @yield('head')
 </head>
+<!-- END: Head-->
 
-<body class="ms-body ms-aside-left-open ms-primary-theme ">
+<!-- BEGIN: Body-->
 
-    @include('cashier.sections.loader')
-
-    @include('cashier.sections.sidebar-left')
-
-
-  <!-- Main Content -->
-  <main class="body-content">
-
+<body class="vertical-layout vertical-menu-modern semi-dark-layout 2-columns  navbar-floating footer-static  "
+    data-open="click" data-menu="vertical-menu-modern" data-col="2-columns" data-layout="semi-dark-layout">
     @include('cashier.sections.header')
-
-    <!-- Body Content Wrapper -->
-    <div class="ms-content-wrapper">
-        @include('cashier.sections.flashmessage')
-        @yield('content')
+    @include('cashier.sections.sidebar')
+    <!-- BEGIN: Content-->
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            @yield('content')
+        </div>
     </div>
+    <!-- END: Content-->
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
 
-  </main>
+    <!-- BEGIN: Vendor JS-->
+    <script src="{{ asset('assets/vendors/js/vendors.min.js') }}"></script>
+    <!-- BEGIN Vendor JS-->
 
 
+    <!-- BEGIN: Theme JS-->
+    <script src="{{ asset('assets/js/core/app-menu.js') }}"></script>
+    <script src="{{ asset('assets/js/core/app.js') }}"></script>
+    <script src="{{ asset('assets/js/scripts/components.js') }}"></script>
+    <!-- END: Theme JS-->
 
-
-  <!-- SCRIPTS -->
-  <!-- Global Required Scripts Start -->
-  <script src="{{ asset('assets/js/jquery-3.3.1.min.js')}}"></script>
-  <script src="{{ asset('assets/js/popper.min.js')}}"></script>
-  <script src="{{ asset('assets/js/bootstrap.min.js')}}"></script>
-  <script src="{{ asset('assets/js/perfect-scrollbar.js')}}"> </script>
-  <script src="{{ asset('assets/js/jquery-ui.min.js')}}"> </script>
-  <!-- Global Required Scripts End -->
-
-  <!-- Page Specific Scripts Start -->
+    <!-- BEGIN: Page JS-->
     @stack('scripts')
-  <!-- Page Specific Scripts End -->
-
-  <!-- Greendash core JavaScript -->
-  <script src="{{ asset('assets/js/framework.js') }}"></script>
-
-  <!-- Settings -->
-  <script src="{{ asset('assets/js/settings.js') }}"></script>
-
-  <script>
-    function executeQuery() {
-        $.ajax({
-            url: "{{route('cashier.check-notifications')}}",
-            method: 'get',
-            success: function(data){
-               $('#notification-count').text(data);
-            }
-        });
-
-    };
-
-    $(document).ready(function(){
-        setInterval(executeQuery,3000);
-    });
-</script>
+    <!-- END: Page JS-->
 
 </body>
 

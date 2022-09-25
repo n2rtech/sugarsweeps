@@ -1,30 +1,16 @@
-@extends('layouts.app')
-@section('title', 'Privacy Policy')
+@extends('layouts.front')
+@section('title', 'Privacy Policy | SugarSweeps')
 @section('content')
 
-    @include('frontend.sections.flashmessage')
-    <div class="home-bg" id="reload-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="reload">
-                        <h2>Privacy Policy</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<!-- ======= Privacy Policy Section ======= -->
+<section id="privacy-policy" class="privacy-policy">
     <div class="container">
-       <div class="mt-5">
-            <div class="row">
-                <div class="col-md-12 information-page">
-                    {!! $privacy['content'] !!}
-                </div>
-            </div>
+        <div class="section-title">
+            <h2><span class="text-primary">Privacy Policy</span></h2>
         </div>
     </div>
-
-    <div style="margin-top: 10rem!important;">
-        @include('frontend.footer')
+    <div class="row">
     </div>
+</section>
+<!-- ======= End Privacy Policy Section ======= -->
 @endsection

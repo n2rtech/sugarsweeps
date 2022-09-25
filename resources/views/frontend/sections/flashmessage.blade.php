@@ -5,9 +5,9 @@
 @endif
 
 
-@if ($message = Session::get('delete'))
+@if ($message = Session::get('error'))
 <div class="alert alert-danger" role="alert">
-	<i class="flaticon-alert-1"></i> <strong>Oh snap!</strong> {{ $message }}
+	<i class="flaticon-alert-1"></i> <strong>Oh Snap!</strong> {{ $message }}
 </div>
 @endif
 

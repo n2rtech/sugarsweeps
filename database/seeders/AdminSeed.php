@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Admin;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 
 class AdminSeed extends Seeder
 {
@@ -16,12 +15,13 @@ class AdminSeed extends Seeder
     public function run()
     {
         Admin::create([
-            'firstname' => 'Sara',
-            'lastname' => 'Trancedi',
-            'phone' => '9229692296',
+            'id' => 1,
+            'name' => 'Sara Trancedi',
             'email' => 'admin@admin.com',
-            'password' => Hash::make('password')
-
+            'phone' => '9999999991',
+            'email_verified_at' => '2021-12-02 00:00:28',
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+            'remember_token' => 'PV4vJ97TJQQtQ4YrDggzPXOxR8idLWcrFVub6Y0dcOq25THLpsZHUIy8stKy',
         ]);
     }
 }
