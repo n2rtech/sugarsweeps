@@ -43,14 +43,14 @@
                                             <td>{{ Carbon\Carbon::parse($history->created_at)->format('d-m-Y h:i:s') }}</td>
                                             <td>
                                                 @isset($history->cashier_id)
-                                                    {{ $history->cashier->firstname }} {{ $history->cashier->lastname }}
+                                                    {{ $history->cashier->name }}
                                                 @else
                                                     Admin
                                                 @endisset
                                             </td>
                                             <td>
                                                 @isset($history->user_id)
-                                                    {{ $history->user->firstname }} {{ $history->user->lastname }}
+                                                    {{ $history->user->name }}
                                                 @else
                                                     Null
                                                 @endisset
