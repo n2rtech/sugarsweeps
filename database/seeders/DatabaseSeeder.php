@@ -17,5 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AdminSeed::class);
         $this->call(CashierSeed::class);
         $this->call(GamingPlatformSeed::class);
+        $this->call(PaymentMethodSeed::class);
+    }
     }
 }

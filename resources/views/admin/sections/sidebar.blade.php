@@ -18,7 +18,7 @@
                 <ul class="menu-content">
                     <li class="{{ request()->is('admin/privacy-setting') ? 'active' : '' }}"><a href="{{ route('admin.privacy-setting.form') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Privacy Page">Privacy Page</span></a>
                     </li>
-                    <li class="{{ request()->is('admin/term-setting') ? 'active' : '' }}"><a href="{{ route('admin.term-setting.form') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Terms and Conditions">Terms and Conditions</span></a>
+                    <li class="{{ request()->is('admin/term-setting') ? 'active' : '' }}"><a href="{{ route('admin.term-setting.form') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Terms and Conditions">Terms Page</span></a>
                     </li>
                     <li class="{{ request()->is('admin/cashapp-setting') ? 'active' : '' }}"><a href="{{ route('admin.cashapp.form') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Cash App">Cash App</span></a>
                     </li>
