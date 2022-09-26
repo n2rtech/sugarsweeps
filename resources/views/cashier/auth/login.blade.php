@@ -74,6 +74,21 @@
                                                 <form action="{{ route('cashier.login') }}" method="POST">
                                                     @csrf
                                                     <fieldset class="form-label-group position-relative has-icon-left">
+                                                        <select class="form-control" id="role"
+                                                            onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                                                            <option value="{{ route('admin.login') }}">Admin</option>
+                                                            <option value="{{ route('cashier.login') }}" selected>Cashier</option>
+                                                        </select>
+                                                        <div class="form-control-position">
+                                                            <i class="feather icon-anchor"></i>
+                                                        </div>
+                                                        <label for="role">Role</label>
+                                                        @error('role')
+                                                            <div class="help-block"><small
+                                                                    class="text-danger">{{ $message }}</small></div>
+                                                        @enderror
+                                                    </fieldset>
+                                                    <fieldset class="form-label-group position-relative has-icon-left">
                                                         <input type="email" class="form-control" id="email"  name="email"
                                                             placeholder="Email Address" value="{{ old('email') }}">
                                                         <div class="form-control-position">

@@ -6,10 +6,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta name="description"
-        content="Login Page | admin">
-    <meta name="keywords"
-        content="admin Login">
+    <meta name="description" content="Login Page | admin">
+    <meta name="keywords" content="admin Login">
     <meta name="author" content="PIXINVENT">
     <title>Log In | Admin</title>
     <link rel="apple-touch-icon" href="{{ asset('assets/images/ico/apple-icon-120.png') }}">
@@ -74,8 +72,26 @@
                                                 <form action="{{ route('admin.login') }}" method="POST">
                                                     @csrf
                                                     <fieldset class="form-label-group position-relative has-icon-left">
-                                                        <input type="email" class="form-control" id="email"  name="email"
-                                                            placeholder="Email Address" value="{{ old('email') }}">
+                                                        <select class="form-control" id="role"
+                                                            onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                                                            <option value="{{ route('admin.login') }}" selected>Admin
+                                                            </option>
+                                                            <option value="{{ route('cashier.login') }}">Cashier
+                                                            </option>
+                                                        </select>
+                                                        <div class="form-control-position">
+                                                            <i class="feather icon-anchor"></i>
+                                                        </div>
+                                                        <label for="role">Role</label>
+                                                        @error('role')
+                                                            <div class="help-block"><small
+                                                                    class="text-danger">{{ $message }}</small></div>
+                                                        @enderror
+                                                    </fieldset>
+                                                    <fieldset class="form-label-group position-relative has-icon-left">
+                                                        <input type="email" class="form-control" id="email"
+                                                            name="email" placeholder="Email Address"
+                                                            value="{{ old('email') }}">
                                                         <div class="form-control-position">
                                                             <i class="feather icon-user"></i>
                                                         </div>
@@ -117,10 +133,9 @@
                                                                 href="{{ route('admin.password.request') }}"
                                                                 class="card-link">Forgot Password?</a></div>
                                                     </div>
-                                                    <div
-                                                    class="form-group text-right">
-                                                    <button type="submit"
-                                                        class="btn btn-primary btn-inline">Login</button>
+                                                    <div class="form-group text-right">
+                                                        <button type="submit"
+                                                            class="btn btn-primary btn-inline">Login</button>
                                                     </div>
                                                 </form>
                                             </div>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\Auth\MyAccountController;
 use App\Http\Controllers\Admin\Auth\ResetPasswordController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\SettingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -60,5 +61,17 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('change-password', [ChangePasswordController::class,'changePasswordForm'])->name('password.form');
 
     Route::post('change-password', [ChangePasswordController::class,'changePassword'])->name('change-password');
+
+    Route::get('cashapp-setting', [SettingController::class,'setting'])->name('cashapp.form');
+
+    Route::post('cashapp-setting', [SettingController::class,'saveSetting'])->name('save-cashapp');
+
+    Route::get('privacy-setting', [SettingController::class,'privacySetting'])->name('privacy-setting.form');
+
+    Route::post('privacy-setting', [SettingController::class,'savePrivacySetting'])->name('save-privacy-setting');
+
+    Route::get('term-setting', [SettingController::class,'termSetting'])->name('term-setting.form');
+
+    Route::post('term-setting', [SettingController::class,'saveTermSetting'])->name('save-term-setting');
 
 });

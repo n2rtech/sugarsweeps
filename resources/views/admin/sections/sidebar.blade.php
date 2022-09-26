@@ -16,9 +16,15 @@
 
             <li class="nav-item {{ request()->is('admin/change-password') || request()->is('admin/my-account/*') ? 'has-sub sidebar-group-active open' : '' }}"><a href="#"><i class="feather icon-settings"></i><span class="menu-title" data-i18n="Ecommerce">Settings</span></a>
                 <ul class="menu-content">
-                    <li class="{{ request()->is('admin/change-password') ? 'active' : '' }}"><a href="{{ route('admin.password.form') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Shop">Change Password</span></a>
+                    <li class="{{ request()->is('admin/privacy-setting') ? 'active' : '' }}"><a href="{{ route('admin.privacy-setting.form') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Privacy Page">Privacy Page</span></a>
                     </li>
-                    <li class="{{ request()->is('admin/my-account/*') ? 'active' : '' }}"><a href="{{ route('admin.my-account.edit', Auth::guard('admin')->id()) }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Details">My Account</span></a>
+                    <li class="{{ request()->is('admin/term-setting') ? 'active' : '' }}"><a href="{{ route('admin.term-setting.form') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Terms and Conditions">Terms and Conditions</span></a>
+                    </li>
+                    <li class="{{ request()->is('admin/cashapp-setting') ? 'active' : '' }}"><a href="{{ route('admin.cashapp.form') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Cash App">Cash App</span></a>
+                    </li>
+                    <li class="{{ request()->is('admin/change-password') ? 'active' : '' }}"><a href="{{ route('admin.password.form') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Change Password">Change Password</span></a>
+                    </li>
+                    <li class="{{ request()->is('admin/my-account/*') ? 'active' : '' }}"><a href="{{ route('admin.my-account.edit', Auth::guard('admin')->id()) }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="My Account">My Account</span></a>
                     </li>
                 </ul>
             </li>
