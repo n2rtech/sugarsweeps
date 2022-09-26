@@ -58,14 +58,6 @@
                                                     <a href="{{ route('admin.payment-methods.edit', $method->id) }}" class="btn btn-warning btn-sm waves-effect waves-light">Edit</a>
                                                     <a href="#modal-delete" data-id="{{ $method->id }}"  data-toggle="modal" data-target="#modal-delete" class="confirmDelete btn btn-sm btn-danger waves-effect waves-light">Delete</a>
                                                 </div>
-                                                {{-- <a href="{{ route('admin.payment-methods.edit', $method->id) }}"
-                                                    class="btn btn-icon rounded-circle btn-warning mr-1 mb-1 waves-effect waves-light"><i
-                                                        class="feather icon-edit"></i>
-                                                </a>
-                                                <a href="#modal-delete" data-id="{{ $method->id }}"
-                                                    class="confirmDelete btn btn-icon rounded-circle btn-danger mr-1 mb-1 waves-effect waves-light"
-                                                    data-toggle="modal" data-target="#modal-delete"><i
-                                                        class="feather icon-trash-2"></i></a> --}}
                                             </td>
                                         </tr>
                                     @endforeach

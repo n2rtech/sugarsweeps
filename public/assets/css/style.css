@@ -13,3 +13,6 @@
     font-size: smaller;
     color: #ea5455;
 }
+#filterBox{
+    display: none;
+}

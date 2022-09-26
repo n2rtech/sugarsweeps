@@ -49,4 +49,20 @@ class Cashier extends Authenticatable
     {
         $this->notify(new ResetPasswordNotification($token));
     }
+
+    public function gamingAccount(){
+        return $this->hasOne(GamingAccount::class, 'cashier_id');
+    }
+
+    public function creditRequest(){
+        return $this->hasOne(CreditRequest::class, 'cashier_id');
+    }
+
+    public function redeemRequest(){
+        return $this->hasOne(RedeemRequest::class, 'cashier_id');
+    }
+
+    public function transaction(){
+        return $this->hasMany(TransactionHistory::class);
+    }
 }

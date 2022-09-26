@@ -3,17 +3,28 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Cashier;
+use App\Models\CreditRequest;
+use App\Models\GamingAccount;
+use App\Models\RedeemRequest;
+use App\Models\User;
 
 class DashboardController extends Controller
 {
-    public function __construct()
+     public function __construct()
     {
         $this->middleware('auth:admin');
     }
 
     public function index()
     {
-        return view('admin.dashboard');
+        $total_players              = User::count();
+        $total_cashiers             = Cashier::count();
+        $total_credit_requests      = CreditRequest::count();
+        $total_redeem_requests      = RedeemRequest::count();
+        $players                    = User::latest()->take(5)->get();
+        $gaming_requests            = GamingAccount::latest()->take(5)->get();
+        $redeem_requests            = RedeemRequest::latest()->take(5)->get();
+        return view('admin.dashboard', compact('total_players', 'total_cashiers', 'total_credit_requests','total_redeem_requests', 'players', 'gaming_requests', 'redeem_requests'));
     }
 }

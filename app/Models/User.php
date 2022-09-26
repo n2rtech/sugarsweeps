@@ -43,4 +43,16 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function gamingAccount(){
+        return $this->hasMany(GamingAccount::class, 'user_id')->where('status', '1');
+    }
+
+    public function creditRequest(){
+        return $this->hasOne(CreditRequest::class, 'user_id');
+    }
+
+    public function redeemRequest(){
+        return $this->hasOne(RedeemRequest::class, 'user_id');
+    }
 }
