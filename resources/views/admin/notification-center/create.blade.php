@@ -1,29 +1,20 @@
 @extends('layouts.admin')
 @section('title','Create Notification')
 @section('content')
-<div class="row">
-    <div class="col-md-12">
-        <nav aria-label="breadcrumb" class="ms-panel-custom">
-            <ol class="breadcrumb pl-0">
-                <li class="breadcrumb-item" aria-current="page"> <a href="#"><i class="material-icons">home</i>
-                        Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('admin.notification-center.index') }}">Notification Center</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Create Notification</li>
-            </ol>
-        </nav>
-    </div>
-    <div class="col-md-12">
-        <div class="ms-panel">
-            <div class="ms-panel-header">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <h6>Create Notification</h6>
-                    </div>
-                </div>
+<div class="content-header row">
+    <div class="content-header-left col-md-9 col-12 mb-2">
+        <div class="row breadcrumbs-top">
+            <div class="col-12">
+                <h2 class="content-header-title float-left mb-0">Create Notification</h2>
             </div>
-            <div class="ms-panel-body">
-                <div class="row">
-                    <div class="col-md-12 mb-4">
+        </div>
+    </div>
+</div>
+<div class="content-body">
+    @include('admin.sections.flash-message')
+    <div class="card">
+        <div class="card-content">
+            <div class="card-body">
                         <form action="{{ route('admin.notification-center.store') }}" method="POST" id="paymentForm" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group row">
@@ -32,7 +23,7 @@
                                     <select class="form-control" id="player" name="player">
                                         <option value="">All</option>
                                         @foreach ($players as $player)
-                                            <option value="{{ $player->id }}">{{ $player->firstname }} {{ $player->lastname }}</option>
+                                            <option value="{{ $player->id }}">{{ $player->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -53,18 +44,15 @@
 
                             <div class="form-group row">
                                 <div class="col-xl-12 col-md-12 text-right">
-                                    <button class="btn btn-gradient-success btn-sm" type="submit"
+                                    <button class="btn btn-success btn-md" type="submit"
                                         form="paymentForm">Send</button>
                                 </div>
                             </div>
-                    </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-</div>
-</div>
 @endsection
 @push('scripts')
 <script>

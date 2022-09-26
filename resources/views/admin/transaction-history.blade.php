@@ -1,9 +1,6 @@
 @extends('layouts.admin')
 @section('title', 'Transaction History')
 @section('content')
-
-    @include('admin.sections.flash-message')
-
     <div class="content-header row">
         <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
