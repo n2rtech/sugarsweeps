@@ -26,7 +26,7 @@ class GamingPackageController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.gaming-packages.create');
     }
 
     /**

@@ -9,53 +9,64 @@
     <div class="row">
         <div class="col-lg-3 col-sm-6 col-12">
             <div class="card">
-                <div class="card-header d-flex flex-column align-items-start pb-0">
+                <div class="card-header d-flex align-items-start pb-0">
+                    <div>
+                        <h2 class="text-bold-700">{{ $total_players }}</h2>
+                        <p class="mb-1">Total Players</p>
+                    </div>
                     <div class="avatar bg-rgba-primary p-50 m-0">
                         <div class="avatar-content">
                             <i class="feather icon-users text-primary font-medium-5"></i>
                         </div>
                     </div>
-                    <h2 class="text-bold-700 mt-1">{{ $total_players }}</h2>
-                    <p class="mb-0">Total Players</p>
                 </div>
             </div>
         </div>
+
         <div class="col-lg-3 col-sm-6 col-12">
             <div class="card">
-                <div class="card-header d-flex flex-column align-items-start pb-0">
-                    <div class="avatar bg-rgba-success p-50 m-0">
+                <div class="card-header d-flex align-items-start pb-0">
+                    <div>
+                        <h2 class="text-bold-700">{{ $total_cashiers }}</h2>
+                        <p class="mb-1">Total Cashiers</p>
+                    </div>
+                    <div class="avatar bg-rgba-primary p-50 m-0">
                         <div class="avatar-content">
                             <i class="feather icon-gitlab text-success font-medium-5"></i>
                         </div>
                     </div>
-                    <h2 class="text-bold-700 mt-1">{{ $total_cashiers }}</h2>
-                    <p class="mb-0">Total Cashiers</p>
                 </div>
             </div>
         </div>
+
         <div class="col-lg-3 col-sm-6 col-12">
             <div class="card">
-                <div class="card-header d-flex flex-column align-items-start pb-0">
-                    <div class="avatar bg-rgba-danger p-50 m-0">
+                <div class="card-header d-flex align-items-start pb-0">
+                    <div>
+                        <h2 class="text-bold-700">{{ $total_credit_requests }}</h2>
+                        <p class="mb-1">Credit Requests</p>
+                    </div>
+                    <div class="avatar bg-rgba-primary p-50 m-0">
                         <div class="avatar-content">
-                            <i class="feather icon-download-cloud text-danger font-medium-5"></i>
+                            <i class="feather icon-download-cloud text-warning font-medium-5"></i>
                         </div>
                     </div>
-                    <h2 class="text-bold-700 mt-1">{{ $total_credit_requests }}</h2>
-                    <p class="mb-0">Credit Requests</p>
                 </div>
             </div>
         </div>
+
         <div class="col-lg-3 col-sm-6 col-12">
             <div class="card">
-                <div class="card-header d-flex flex-column align-items-start pb-0">
-                    <div class="avatar bg-rgba-warning p-50 m-0">
+                <div class="card-header d-flex align-items-start pb-0">
+                    <div>
+                        <h2 class="text-bold-700">{{ $total_redeem_requests }}</h2>
+                        <p class="mb-1">Redeem Requests</p>
+                    </div>
+                    <div class="avatar bg-rgba-primary p-50 m-0">
                         <div class="avatar-content">
-                            <i class="feather icon-upload-cloud text-warning font-medium-5"></i>
+                            <i class="feather icon-upload-cloud text-danger font-medium-5"></i>
                         </div>
                     </div>
-                    <h2 class="text-bold-700 mt-1">{{ $total_redeem_requests }}</h2>
-                    <p class="mb-0">Redeem Requests</p>
                 </div>
             </div>
         </div>
