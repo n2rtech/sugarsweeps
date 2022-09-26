@@ -92,6 +92,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     */
     Route::resource('gaming-packages', GamingPackageController::class);
 
+    Route::get('gaming-packages-import', [GamingPackageController::class, 'import'])->name('gaming-packages.import');
+
     /*
     |--------------------------------------------------------------------------
     | Deposit Request Route

@@ -84,4 +84,8 @@ class GamingPackageController extends Controller
     {
         //
     }
+
+    public function import(){
+        return view('admin.gaming-packages.import');
+    }
 }

@@ -16,3 +16,6 @@
 #filterBox{
     display: none;
 }
+.btn {
+    font-weight: 600;
+}

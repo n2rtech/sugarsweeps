@@ -34,7 +34,7 @@
 
             <li class="nav-item {{ request()->is('admin/transaction-history') || request()->is('admin/transaction-history/*') ? 'active' : '' }}"><a href="{{ route('admin.transaction-history.index') }}"><i class="feather icon-file-text"></i><span class="menu-title" data-i18n="Transaction History">Transaction History</span></a></li>
 
-            <li class="nav-item {{ request()->is('admin/gaming-packages') || request()->is('admin/gaming-packages/*') ? 'active' : '' }}"><a href="{{ route('admin.gaming-packages.index') }}"><i class="feather icon-star"></i><span class="menu-title" data-i18n="Gaming Stars">Gaming Stars</span></a></li>
+            <li class="nav-item {{ request()->is('admin/gaming-packages') || request()->is('admin/gaming-packages/*') ? 'active' : '' }}"><a href="{{ route('admin.gaming-packages.index') }}"><i class="feather icon-star"></i><span class="menu-title" data-i18n="Gaming Packages">Gaming Packages</span></a></li>
 
             <li class="nav-item {{ request()->is('admin/gaming-platforms') || request()->is('admin/gaming-platforms/*') ? 'active' : '' }}"><a href="{{ route('admin.gaming-platforms.index') }}"><i class="feather icon-zap"></i><span class="menu-title" data-i18n="Gaming Platforms">Gaming Platforms</span></a></li>
 
