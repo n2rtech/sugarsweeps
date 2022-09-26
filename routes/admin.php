@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\Auth\ResetPasswordController;
 use App\Http\Controllers\Admin\CashierController;
 use App\Http\Controllers\Admin\CreditRequestController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\GamingPackageController;
 use App\Http\Controllers\Admin\GamingPlatformController;
 use App\Http\Controllers\Admin\GamingRequestController;
 use App\Http\Controllers\Admin\NotificationController;
@@ -83,6 +84,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     |--------------------------------------------------------------------------
     */
     Route::resource('gaming-requests', GamingRequestController::class);
+
+    /*
+    |--------------------------------------------------------------------------
+    | Gaming Package Route
+    |--------------------------------------------------------------------------
+    */
+    Route::resource('gaming-packages', GamingPackageController::class);
 
     /*
     |--------------------------------------------------------------------------
