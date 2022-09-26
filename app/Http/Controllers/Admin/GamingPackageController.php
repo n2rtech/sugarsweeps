@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\GamingPackage;
+use App\Models\GamingPlatform;
 use Illuminate\Http\Request;
 
 class GamingPackageController extends Controller
@@ -26,7 +27,11 @@ class GamingPackageController extends Controller
      */
     public function create()
     {
-        return view('admin.gaming-packages.create');
+        $platforms = GamingPlatform::get();
+        foreach($platforms as $platform){
+            $platform->image = isset($platform->image) ? asset('storage/uploads/gaming-platforms/' . $platform->image) : asset('assets/img/game-placeholder.jpg') ;
+        }
+        return view('admin.gaming-packages.create', compact('platforms'));
     }
 
     /**
@@ -37,7 +42,33 @@ class GamingPackageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'package'           => 'required',
+            'password'          => 'required',
+            'gemini'            => 'required',
+            'orionstars'        => 'required',
+            'riversweeps'       => 'required',
+            'vpower'            => 'required',
+            'ultramonster'      => 'required',
+            'firekirin'         => 'required',
+            'bluedragons'       => 'required',
+            'pandamaster'       => 'required',
+        ];
+
+        $messages = [
+            'package.required'           => 'Please enter Package name',
+            'password.required'          => 'Please enter Default password',
+            'gemini.required'            => 'Please enter Gemini Username',
+            'orionstars.required'        => 'Please enter Orion Stars Username',
+            'riversweeps.required'       => 'Please enter Riversweeps Username',
+            'vpower.required'            => 'Please enter V Power Username',
+            'ultramonster.required'      => 'Please enter Ultramonster Username',
+            'firekirin.required'         => 'Please enter Firekirin Username.',
+            'bluedragons.required'       => 'Please enter Blue Dragons Username',
+            'pandamaster.required'       => 'Please enter Panda Master Username.',
+        ];
+
+        $this->validate($request, $rules, $messages);
     }
 
     /**

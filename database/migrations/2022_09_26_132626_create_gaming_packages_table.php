@@ -16,7 +16,18 @@ class CreateGamingPackagesTable extends Migration
         Schema::create('gaming_packages', function (Blueprint $table) {
             $table->id();
             $table->string('package');
-            $table->boolean('status')->default(true);
+            $table->string('gemini')->nullable();
+            $table->string('orionstars')->nullable();
+            $table->string('riversweeps')->nullable();
+            $table->string('vpower')->nullable();
+            $table->string('ultramonster')->nullable();
+            $table->string('firekirin')->nullable();
+            $table->string('bluedragons')->nullable();
+            $table->string('pandamaster')->nullable();
+            $table->string('password');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

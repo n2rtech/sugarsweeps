@@ -10,22 +10,83 @@
             </div>
         </div>
     </div>
-    <div class="content-body">
+    <form action="{{ route('admin.gaming-packages.store') }}" method="POST" id="gamingForm" enctype="multipart/form-data">
+        @csrf
         @include('admin.sections.flash-message')
-        <div class="card">
-            <div class="card-content">
-                <div class="card-body">
-                    <form action="{{ route('admin.gaming-packages.store') }}" method="POST" id="gamingForm"
-                        enctype="multipart/form-data">
-                        @csrf
-
-
-                    </form>
-                </div>
-                <div class="card-footer text-right">
-                    <button type="submit" class="btn btn-success" form="gamingForm">Save</button>
+         <div class="content-body">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label for="package" class="col-sm-2 col-form-label">Package Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="package" placeholder="Package Name"
+                                    name="package" value="{{ old('package') }}">
+                                @error('package')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="password" class="col-sm-2 col-form-label">Default Password</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="password" placeholder="Default Password"
+                                    name="password" value="Abc123">
+                                @error('password')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        <div class="content-body">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-body">
+                        <div class="col-xl-12 col-lg-12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            @foreach ($platforms as $platform)
+                                                <div class="col-md-6">
+                                                    <div class="media-list">
+                                                        <div class="media">
+                                                            <a class="media-left" href="#">
+                                                                <img src="{{ $platform->image }}"
+                                                                    alt="Generic placeholder image" height="64"
+                                                                    width="64">
+                                                            </a>
+                                                            <div class="media-body">
+                                                                <h5 class="media-heading">{{ $platform->platform }}</h5>
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="{{ $platform->platform }} Username" name="{{  Str::lower(str_replace(' ', '', $platform->platform)) }}" value="{{ old(Str::lower(str_replace(' ', '', $platform->platform))) }}">
+                                                                @error(Str::lower(str_replace(' ', '', $platform->platform)))
+                                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                                @enderror
+                                                                </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-footer text-right">
+                        <button type="submit" class="btn btn-success" form="gamingForm">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 @endsection
