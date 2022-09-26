@@ -6,3 +6,10 @@
     font-size: 1.47rem;
     animation: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) 0s normal forwards 1 fadein;
 }
+.invalid-feedback {
+    display: block;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: smaller;
+    color: #ea5455;
+}

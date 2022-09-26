@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\Auth\MyAccountController;
 use App\Http\Controllers\Admin\Auth\ResetPasswordController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\GamingPlatformController;
+use App\Http\Controllers\Admin\PaymentMethodController;
 use App\Http\Controllers\Admin\SettingController;
 use Illuminate\Support\Facades\Route;
 
@@ -45,6 +47,20 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     */
 
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
+    /*
+    |--------------------------------------------------------------------------
+    | Gaming Platforms Route
+    |--------------------------------------------------------------------------
+    */
+    Route::resource('gaming-platforms', GamingPlatformController::class);
+
+    /*
+    |--------------------------------------------------------------------------
+    | Payment Method Route
+    |--------------------------------------------------------------------------
+    */
+    Route::resource('payment-methods', PaymentMethodController::class);
 
      /*
     |--------------------------------------------------------------------------
