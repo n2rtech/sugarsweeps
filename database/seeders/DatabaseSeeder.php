@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call(CashierSeed::class);
         $this->call(GamingPlatformSeed::class);
         $this->call(PaymentMethodSeed::class);
+        $this->call(GamingPackageSeed::class);
+        $this->call(GamingAccountSeed::class);
         $this->call(SettingSeed::class);
     }
 

@@ -3,8 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\GamingAccount;
+use App\Models\GamingPackage;
+use App\Models\GamingPlatform;
+use Illuminate\Support\Str;
+use App\Models\Notification;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -97,6 +103,39 @@ class PlayerController extends Controller
         $player->approved     = $request->approved;
         $player->save();
 
+        if($player->approved == 2){
+            $package                        = GamingPackage::where('status', 0)->whereNull('user_id')->first();
+            GamingPackage::where('id', $package->id)->update(['status' => 1, 'user_id' => $player->id]);
+
+            $platforms                      = GamingPlatform::get(['id', 'platform']);
+
+            foreach($platforms as $platform){
+
+                $account                    = new GamingAccount();
+                $account->user_id           = $player->id;
+                $account->platform_id       = $platform->id;
+                $account->status            = '1';
+                $account->username          = GamingPackage::where('id', $package->id)->value(Str::lower(str_replace(' ', '', $platform->platform)));
+                $account->password          = $package->password;
+                $account->action_taken_at   = now();
+                $account->save();
+
+                $notification_exists = Notification::where('type', 'account_created')->where('receiver_id', $player->id)->where('gaming_account_id', $account->id)->exists();
+
+                    if(!$notification_exists){
+                        $notification                       = new Notification();
+                        $notification->type                 = 'account-created';
+                        $notification->sender               = 'admin';
+                        $notification->sender_id            = Auth::guard('admin')->user()->id;
+                        $notification->receiver_id          = $player->id;
+                        $notification->gaming_account_id    = $account->id;
+                        $notification->save();
+                    }
+
+            }
+
+        }
+
         return redirect()->route('admin.players.index')->with('success', 'Player created successfully.');
     }
 
@@ -175,5 +214,17 @@ class PlayerController extends Controller
         $player->password = Hash::make($request->password);
         $player->save();
         return redirect()->route('admin.players.edit', $request->player_id)->with('success', 'Password changed successfully');
+    }
+
+    public function credentials($id)
+    {
+        $package_id = GamingPackage::where('user_id', $id)->value('id');
+        $platforms = GamingPlatform::get();
+        foreach ($platforms as $platform) {
+            $platform->image = isset($platform->image) ? asset('storage/uploads/gaming-platforms/' . $platform->image) : asset('assets/img/game-placeholder.jpg');
+            $platform->username = GamingPackage::where('id', $id)->value(Str::lower(str_replace(' ', '', $platform->platform)));
+        }
+        $package   = GamingPackage::where('id', $package_id)->first();
+        return view('admin.players.credentials', compact('platforms', 'package'));
     }
 }

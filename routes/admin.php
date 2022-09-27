@@ -63,6 +63,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     |--------------------------------------------------------------------------
     */
     Route::resource('players', PlayerController::class);
+    Route::get('players/credentials/{id}', [PlayerController::class, 'credentials'])->name('players.credentials');
 
     Route::get('admin/player/change-password/{id}', [PlayerController::class, 'changePasswordForm'])->name('player.password-form');
 
