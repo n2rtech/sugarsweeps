@@ -24,7 +24,5 @@ class GamingPackage extends Model
         'status'
 	];
 
-    protected $hidden = ['id', 'user_id', 'created_at', 'updated_at', 'status'];
-
     public $timestamps = true;
 }

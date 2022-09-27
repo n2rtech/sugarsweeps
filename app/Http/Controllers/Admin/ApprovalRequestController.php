@@ -3,9 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\GamingAccount;
+use App\Models\GamingPackage;
+use App\Models\GamingPlatform;
+use App\Models\Notification;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class ApprovalRequestController extends Controller
 {
@@ -84,7 +90,10 @@ class ApprovalRequestController extends Controller
      */
     public function show($id)
     {
-        //
+        $player = User::find($id);
+        $player->photo_id = isset($player->photo_id) ? asset('storage/uploads/users/'.$player->photo_id) : 'https://via.placeholder.com/260x160.png?text=260+x+160+px' ;
+
+        return view('admin.approval-requests.show', compact('player'));
     }
 
     /**
@@ -119,5 +128,54 @@ class ApprovalRequestController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function approve($id)
+    {
+        $player              = User::find($id);
+        $player->approved    = '2';
+        $player->save();
+
+        $package                        = GamingPackage::where('status', 0)->whereNull('user_id')->first();
+        GamingPackage::where('id', $package->id)->update(['status' => 1, 'user_id' => $id]);
+
+        $platforms                      = GamingPlatform::get(['id', 'platform']);
+
+        foreach($platforms as $platform){
+
+            $account                    = new GamingAccount();
+            $account->user_id           = $id;
+            $account->platform_id       = $platform->id;
+            $account->status            = '1';
+            $account->username          = GamingPackage::where('id', $package->id)->value(Str::lower(str_replace(' ', '', $platform->platform)));
+            $account->password          = $package->password;
+            $account->action_taken_at   = now();
+            $account->save();
+
+            $notification_exists = Notification::where('type', 'account_created')->where('receiver_id', $id)->where('gaming_account_id', $account->id)->exists();
+
+                if(!$notification_exists){
+                    $notification                       = new Notification();
+                    $notification->type                 = 'account-created';
+                    $notification->sender               = 'admin';
+                    $notification->sender_id            = Auth::guard('admin')->user()->id;
+                    $notification->receiver_id          = $id;
+                    $notification->gaming_account_id    = $account->id;
+                    $notification->save();
+                }
+
+        }
+
+
+        return redirect()->route('admin.approval-requests.index')->with('success', 'Player Account has been approved successfully');
+    }
+
+    public function reject($id)
+    {
+        $player             = User::find($id);
+        $player->approved   = '3';
+        $player->save();
+
+        return redirect()->route('admin.approval-requests.index')->with('danger', 'Player Account has been rejected successfully');
     }
 }

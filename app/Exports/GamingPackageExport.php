@@ -36,20 +36,73 @@ class GamingPackageExport implements FromCollection, WithHeadings, ShouldAutoSiz
         switch ($this->data['type']) {
 
             case '0':
-                $packages = GamingPackage::get();
+                $packages = GamingPackage::get([
+                    'package',
+                    'gemini',
+                    'orionstars',
+                    'riversweeps',
+                    'vpower',
+                    'ultramonster',
+                    'firekirin',
+                    'bluedragons',
+                    'pandamaster',
+                    'password'
+                ]);
                 break;
             case '1':
-                $packages = GamingPackage::whereNotNull('user_id')->get();
+                $packages = GamingPackage::whereNotNull('user_id')->get([
+                    'package',
+                    'gemini',
+                    'orionstars',
+                    'riversweeps',
+                    'vpower',
+                    'ultramonster',
+                    'firekirin',
+                    'bluedragons',
+                    'pandamaster',
+                    'password'
+                ]);
                 break;
             case '2':
-                $packages = GamingPackage::whereNull('user_id')->get();
+                $packages = GamingPackage::whereNull('user_id')->get([
+                    'package',
+                    'gemini',
+                    'orionstars',
+                    'riversweeps',
+                    'vpower',
+                    'ultramonster',
+                    'firekirin',
+                    'bluedragons',
+                    'pandamaster',
+                    'password'
+                ]);
                 break;
             default:
-                $packages = GamingPackage::get();
+                $packages = GamingPackage::get([
+                    'package',
+                    'gemini',
+                    'orionstars',
+                    'riversweeps',
+                    'vpower',
+                    'ultramonster',
+                    'firekirin',
+                    'bluedragons',
+                    'pandamaster',
+                    'password'
+                ]);
                 break;
         }
 
         return $packages;
+    }
+
+    public function map($invoice): array
+    {
+        return [
+            $invoice->invoice_number,
+            Date::dateTimeToExcel($invoice->created_at),
+            $invoice->total
+        ];
     }
 
     public function headings(): array

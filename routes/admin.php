@@ -85,6 +85,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     |--------------------------------------------------------------------------
     */
     Route::resource('approval-requests', ApprovalRequestController::class);
+    Route::get('approval-requests/approve/{id}', [ApprovalRequestController::class, 'approve'])->name('approval-requests.approve');
+    Route::get('approval-requests/reject/{id}', [ApprovalRequestController::class, 'reject'])->name('approval-requests.reject');
 
     /*
     |--------------------------------------------------------------------------

@@ -102,8 +102,7 @@
                                             @endif
                                             <td class="text-center">
                                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                                    <a href="{{ route('admin.players.edit', $player->id) }}" class="btn btn-warning btn-sm waves-effect waves-light">Edit</a>
-                                                    <a href="#modal-delete" data-id="{{ $player->id }}"  data-toggle="modal" data-target="#modal-delete" class="confirmDelete btn btn-sm btn-danger waves-effect waves-light">Delete</a>
+                                                    <a href="{{ route('admin.approval-requests.show', $player->id) }}" class="btn btn-warning btn-sm waves-effect waves-light">Show</a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -121,31 +120,6 @@
         </div>
     </div>
     {{ $players->links('vendor.pagination.bootstrap-4') }}
-
-    <div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="modal-delete">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <form method="POST" action="" id="deleteForm">
-                    <input type='hidden' name='_token' value='{{ csrf_token() }}'>
-                    <input type='hidden' name='_method' value='DELETE'>
-                    <div class="modal-header bg-danger">
-                        <h4 class="modal-title has-icon text-white"><i class="flaticon-alert-1"></i> Are you sure ?</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">&times;</span></button>
-                    </div>
-
-                    <div class="modal-body">
-                        <p>You won't be able to revert this player once deleted!</p>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-success shadow-none">Confirm</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 @endsection
 @push('scripts')
     <!-- Confirm Delete Scripts Start -->
