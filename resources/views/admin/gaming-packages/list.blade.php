@@ -13,7 +13,7 @@
             <div class="form-group breadcrum-right">
                 <div class="dropdown">
                     <a class="btn btn-info btn-md waves-effect waves-light"
-                        href="{{ route('admin.gaming-packages.import-export') }}">Import</a>
+                        href="{{ route('admin.gaming-packages.import') }}">Import</a>
                     <a class="btn btn-dark btn-md waves-effect waves-light"
                         href="{{ route('admin.gaming-packages.create') }}">Create</a>
                 </div>
@@ -31,8 +31,8 @@
                                 <thead class="thead-dark">
                                     <tr>
                                         <th scope="col">Id</th>
-                                        <th scope="col">Package</th>
-                                        <th scope="col">Status</th>
+                                        <th scope="col">Gaming Platform</th>
+                                        <th scope="col" class="text-center">Assigned</th>
                                         <th scope="col" class="text-center">Action</th>
                                     </tr>
                                 </thead>
@@ -41,20 +41,12 @@
                                         <tr>
                                             <th scope="row">{{ $package->id }}</th>
                                             <td>{{ $package->package }}</td>
-                                            <td>
-                                                <div class="custom-control custom-switch custom-switch-success mr-2 mb-1">
-                                                    <input type="checkbox" class="custom-control-input"
-                                                        id="status{{ $package->id }}" name="status"
-                                                        value="{{ $package->id }}"
-                                                        @if ($package->status == 0) checked @endif
-                                                        onchange="changeStatus(this.value)">
-                                                    <label class="custom-control-label" for="status{{ $package->id }}">
-                                                        <span class="switch-text-left"><i
-                                                                class="feather icon-check"></i></span>
-                                                        <span class="switch-text-right"><i
-                                                                class="feather icon-x"></i></span>
-                                                    </label>
-                                                </div>
+                                            <td class="text-center">
+                                                @isset ($package->user_id)
+                                                <a href="{{ route('admin.players.edit', $package->user_id) }}" class="btn btn-relief-success btn-sm waves-effect waves-light">{{ getPlayerNameById($package->user_id) }}</a>
+                                                @else
+                                                    <a href="javascript:void(0)" class="btn btn-relief-light btn-sm waves-effect waves-light">Not Assigned</a>
+                                                @endisset
                                             </td>
                                             <td class="text-center">
                                                 <div class="btn-group" role="group" aria-label="Basic example">
@@ -84,19 +76,19 @@
                 <form method="POST" action="" id="deleteForm">
                     <input type='hidden' name='_token' value='{{ csrf_token() }}'>
                     <input type='hidden' name='_method' value='DELETE'>
-                    <div class="modal-header bg-danger">
+                    <div class="modal-header bg-warning">
                         <h4 class="modal-title has-icon text-white"><i class="flaticon-alert-1"></i> Are you sure ?</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
                     </div>
 
                     <div class="modal-body">
-                        <p>You won't be able to revert this Gaming Package once deleted!</p>
+                        <p>You won't be able to revert this vendor once deleted!</p>
                     </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-success shadow-none">Confirm</button>
+                        <button type="submit" class="btn btn-primary shadow-none">Confirm</button>
                     </div>
                 </form>
             </div>

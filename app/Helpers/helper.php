@@ -119,3 +119,10 @@ if (!function_exists('accountExists')) {
     }
 
 }
+if (!function_exists('getPlayerNameById')) {
+    function getPlayerNameById($id)
+    {
+        $username = User::where('id', $id)->value('name');
+        return $username;
+    }
+}

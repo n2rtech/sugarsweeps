@@ -91,6 +91,7 @@
                                         <th scope="col">Email</th>
                                         <th scope="col">Phone</th>
                                         <th scope="col">Approval</th>
+                                        <th scope="col" class="text-center">Game Credentials</th>
                                         <th scope="col" class="text-center">Action</th>
                                     </tr>
                                 </thead>
@@ -114,6 +115,13 @@
                                                     <div class="badge badge-light-warning">Pending</div>
                                                 </td>
                                             @endif
+                                            <td class="text-center">
+                                                @if ($player->approved == '2')
+                                                    <a href="{{ route('admin.players.credentials', $player->id) }}" class="btn btn-relief-success btn-sm waves-effect waves-light">Show</a>
+                                                @else
+                                                    <a href="javascript:void(0)" class="btn btn-relief-light btn-sm waves-effect waves-light">N/A</a>
+                                                @endif
+                                            </td>
                                             <td class="text-center">
                                                 <div class="btn-group" role="group" aria-label="Basic example">
                                                     <a href="{{ route('admin.players.edit', $player->id) }}" class="btn btn-warning btn-sm waves-effect waves-light">Edit</a>
