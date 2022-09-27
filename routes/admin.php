@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ApprovalRequestController;
 use App\Http\Controllers\Admin\Auth\ChangePasswordController;
 use App\Http\Controllers\Admin\Auth\ForgotPasswordController;
 use App\Http\Controllers\Admin\Auth\LoginController;
@@ -80,10 +81,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
     /*
     |--------------------------------------------------------------------------
-    | Gaming Request Route
+    | Approval Request Route
     |--------------------------------------------------------------------------
     */
-    Route::resource('gaming-requests', GamingRequestController::class);
+    Route::resource('approval-requests', ApprovalRequestController::class);
 
     /*
     |--------------------------------------------------------------------------

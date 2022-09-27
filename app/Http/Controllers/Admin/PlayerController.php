@@ -35,7 +35,7 @@ class PlayerController extends Controller
         $players = User::orderBy('id', 'desc');
 
         if(isset($filter_name)){
-            $players =  $players->where(DB::raw("concat(firstname, ' ', lastname)"), 'LIKE', "%".$filter_name."%");
+            $players =  $players->where('name', 'LIKE', "%".$filter_name."%");
         }
         if(isset($filter_email)){
             $players =  $players->whereEmail($filter_email);

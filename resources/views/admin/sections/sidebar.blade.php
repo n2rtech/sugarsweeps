@@ -18,6 +18,8 @@
 
             <li class="nav-item {{ request()->is('admin/cashiers') || request()->is('admin/cashiers/*') ? 'active' : '' }}"><a href="{{ route('admin.cashiers.index') }}"><i class="feather icon-gitlab"></i><span class="menu-title" data-i18n="Cashiers">Cashiers</span></a></li>
 
+            <li class="nav-item {{ request()->is('admin/approval-requests') || request()->is('admin/approval-requests/*') ? 'active' : '' }}"><a href="{{ route('admin.approval-requests.index') }}"><i class="feather icon-shield"></i><span class="menu-title" data-i18n="Players">Approval Requests</span></a></li>
+
             <li class="nav-item {{ request()->is('admin/deposit-requests') || request()->is('admin/deposit-requests/*') ? 'active' : '' }}"><a href="{{ route('admin.deposit-requests.index') }}"><i class="feather icon-download-cloud"></i><span class="menu-title" data-i18n="Deposit Requests">Deposit Requests</span></a></li>
 
             <li class="nav-item {{ request()->is('admin/redeem-requests') || request()->is('admin/redeem-requests/*') || request()->is('admin/redeem-report') ? 'active' : '' }}"><a href="#"><i class="feather icon-upload-cloud"></i><span class="menu-title" data-i18n="Redeem Requests">Redeem Requests</span></a>

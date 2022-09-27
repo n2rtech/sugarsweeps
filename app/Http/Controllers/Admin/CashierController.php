@@ -33,7 +33,7 @@ class CashierController extends Controller
         $cashiers = Cashier::orderBy('id', 'desc');
 
         if(isset($filter_name)){
-            $cashiers =  $cashiers->where(DB::raw("concat(firstname, ' ', lastname)"), 'LIKE', "%".$filter_name."%");
+            $cashiers =  $cashiers->where('name', 'LIKE', "%".$filter_name."%");
         }
         if(isset($filter_email)){
             $cashiers =  $cashiers->whereEmail($filter_email);
