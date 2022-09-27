@@ -16,7 +16,7 @@
                 <h4 class="cash-tag-description">To deposit with CashApp make sure to include Game Name/Username in the
                     Memo $Cashtag</h4>
                 <div class="text-center mt-4">
-                    <a href="#" class="cash-app-button">CASHAPP DEPOSIT LINK</a>
+                    <a href="{{ $cashapp['cashapp'] }}" target="_blank" class="cash-app-button">CASHAPP DEPOSIT LINK</a>
                 </div>
                 @guest
                     @include('frontend.components.disabled', ['title' => ' to reload with CashApp'])
@@ -42,7 +42,7 @@
 
                             <div class="col-md-8">
                                 <select name="platform" id="platform"
-                                    class="form-control @error('platform') is-invalid @enderror">
+                                    class="form-control @error('platform') is-invalid @enderror" onchange="populateUsername(this);">
                                     <option value="">Select Gaming Platform</option>
                                     @foreach ($platforms as $platform)
                                         <option value="{{ $platform->id }}">{{ $platform->platform }}</option>

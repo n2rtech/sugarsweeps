@@ -18,10 +18,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
 
+Route::post('auto-populate', [IndexController::class, 'populate'])->name('populate');
+
 Route::get('terms-and-conditions', [IndexController::class, 'terms'])->name('terms-and-conditions');
+
 Route::get('privacy-policy', [IndexController::class, 'privacyPolicy'])->name('privacy-policy');
+
 Route::get('settings', [IndexController::class, 'settings'])->name('settings');
+
 Route::get('transactions', [IndexController::class, 'transactions'])->name('transactions');
+
 Route::get('notifications', [IndexController::class, 'notifications'])->name('notifications');
 
 Route::get('/', [IndexController::class, 'index'])->name('index');

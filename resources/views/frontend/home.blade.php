@@ -27,7 +27,7 @@
         @include('frontend.components.contact')
 
     </main>
-
-
-
 @endsection
+@push('scripts')
+    @include('frontend.components.scripts')
+@endpush

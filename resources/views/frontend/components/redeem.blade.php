@@ -15,7 +15,7 @@
 
                     <div class="col-md-8">
                         <select name="redeem_platform" id="redeem_platform"
-                            class="form-control @error('redeem_platform') is-invalid @enderror">
+                            class="form-control @error('redeem_platform') is-invalid @enderror" onchange="populateRedeemUsername(this);">
                             <option value="">Select Gaming Platform</option>
                             @foreach ($platforms as $platform)
                                 <option value="{{ $platform->id }}">{{ $platform->platform }}</option>

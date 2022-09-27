@@ -23,7 +23,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="row h-25 mt-3">
+                    <div class="row h-25 mt-3 @guest mb-3 @endguest">
                         <table class="h-100 w-100">
                             <tbody>
                                 <tr>
@@ -35,20 +35,22 @@
                             </tbody>
                         </table>
                     </div>
+                    @auth
                     <div class="row h-50 mt-4 mb-3">
                         <table class="h-100 w-100 f-14">
                             <tbody>
                                 <tr>
-                                    <td class="w-75 col-6 text-left font-weight-bold align-middle">Username</td>
-                                    <td class="w-25 col-6 text-right font-weight-bold align-middle">905800</td>
+                                    <td class="col-3 text-left font-weight-bold align-middle">Username</td>
+                                    <td class="col-9 text-right align-middle">{{ getUsername($platform->id) }}</td>
                                 </tr>
                                 <tr>
-                                    <td class="w-75 col-6 text-left font-weight-bold align-middle">Password</td>
-                                    <td class="w-25 col-6 text-right font-weight-bold align-middle">Abc123</td>
+                                    <td class="col-3 text-left font-weight-bold align-middle">Password</td>
+                                    <td class="col-9 text-right align-middle">{{ getPassword($platform->id) }}</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
+                    @endauth
                 </div>
             @endforeach
         </div>
