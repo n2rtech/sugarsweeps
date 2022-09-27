@@ -13,7 +13,7 @@
             <div class="form-group breadcrum-right">
                 <div class="dropdown">
                     <a class="btn btn-info btn-md waves-effect waves-light"
-                        href="{{ route('admin.gaming-packages.import') }}">Import</a>
+                        href="{{ route('admin.gaming-packages.import-export') }}">Import</a>
                     <a class="btn btn-dark btn-md waves-effect waves-light"
                         href="{{ route('admin.gaming-packages.create') }}">Create</a>
                 </div>
@@ -31,7 +31,7 @@
                                 <thead class="thead-dark">
                                     <tr>
                                         <th scope="col">Id</th>
-                                        <th scope="col">Gaming Platform</th>
+                                        <th scope="col">Package</th>
                                         <th scope="col">Status</th>
                                         <th scope="col" class="text-center">Action</th>
                                     </tr>
@@ -46,7 +46,7 @@
                                                     <input type="checkbox" class="custom-control-input"
                                                         id="status{{ $package->id }}" name="status"
                                                         value="{{ $package->id }}"
-                                                        @if ($package->status == 1) checked @endif
+                                                        @if ($package->status == 0) checked @endif
                                                         onchange="changeStatus(this.value)">
                                                     <label class="custom-control-label" for="status{{ $package->id }}">
                                                         <span class="switch-text-left"><i
@@ -84,19 +84,19 @@
                 <form method="POST" action="" id="deleteForm">
                     <input type='hidden' name='_token' value='{{ csrf_token() }}'>
                     <input type='hidden' name='_method' value='DELETE'>
-                    <div class="modal-header bg-warning">
+                    <div class="modal-header bg-danger">
                         <h4 class="modal-title has-icon text-white"><i class="flaticon-alert-1"></i> Are you sure ?</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
                     </div>
 
                     <div class="modal-body">
-                        <p>You won't be able to revert this vendor once deleted!</p>
+                        <p>You won't be able to revert this Gaming Package once deleted!</p>
                     </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary shadow-none">Confirm</button>
+                        <button type="submit" class="btn btn-success shadow-none">Confirm</button>
                     </div>
                 </form>
             </div>

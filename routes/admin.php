@@ -92,7 +92,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     */
     Route::resource('gaming-packages', GamingPackageController::class);
 
-    Route::get('gaming-packages-import', [GamingPackageController::class, 'import'])->name('gaming-packages.import');
+    Route::get('gaming-packages-import-export', [GamingPackageController::class, 'importExport'])->name('gaming-packages.import-export');
+
+    Route::post('gaming-packages-import', [GamingPackageController::class, 'import'])->name('gaming-packages.import');
+
+    Route::post('gaming-packages-export', [GamingPackageController::class, 'export'])->name('gaming-packages.export');
 
     /*
     |--------------------------------------------------------------------------

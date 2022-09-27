@@ -79,19 +79,19 @@
                 <form method="POST" action="" id="deleteForm">
                     <input type='hidden' name='_token' value='{{ csrf_token() }}'>
                     <input type='hidden' name='_method' value='DELETE'>
-                    <div class="modal-header bg-warning">
+                    <div class="modal-header bg-danger">
                         <h4 class="modal-title has-icon text-white"><i class="flaticon-alert-1"></i> Are you sure ?</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
                     </div>
 
                     <div class="modal-body">
-                        <p>You won't be able to revert this vendor once deleted!</p>
+                        <p>You won't be able to revert this Payment Method once deleted!</p>
                     </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary shadow-none">Confirm</button>
+                        <button type="submit" class="btn btn-success shadow-none">Confirm</button>
                     </div>
                 </form>
             </div>
