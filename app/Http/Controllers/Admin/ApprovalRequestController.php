@@ -176,6 +176,6 @@ class ApprovalRequestController extends Controller
         $player->approved   = '3';
         $player->save();
 
-        return redirect()->route('admin.approval-requests.index')->with('danger', 'Player Account has been rejected successfully');
+        return redirect()->route('admin.approval-requests.index')->with('error', 'Player Account has been rejected successfully');
     }
 }

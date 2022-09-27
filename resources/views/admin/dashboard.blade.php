@@ -131,11 +131,82 @@
                         </div>
                     @endif
                 </div>
+                @if (count($players) > 5)
+                <div class="card-footer text-center">
+                    <a href="{{ route('admin.players.index') }}" class="btn btn-outline-light square waves-effect waves-light">View All</a>
+                </div>
+                @endif
             </div>
         </div>
     </div>
     <!-- Recent  Player ends Here-->
 
+     <!-- Recent  Approval Requests starts Here-->
+     <div class="content-body">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Recent Approval Requests</h4>
+            </div>
+            <div class="card-content">
+                <div class="card-body">
+                    @if (count($approval_requests) > 0)
+                    <div class="table-responsive" id="table-hover-animation">
+                        <table class="table table-hover-animation mb-0">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Player</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Phone</th>
+                                    <th scope="col">Approval</th>
+                                    <th scope="col" class="text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($approval_requests as $request)
+                                    <tr>
+                                        <th scope="row">{{ $request->id }}</th>
+                                        <td>{{ $request->name }}</td>
+                                        <td>{{ $request->email }}</td>
+                                        <td>{{ $request->phone }}</td>
+                                        @if ($request->approved == '2')
+                                            <td>
+                                                <div class="badge badge-light-success">Approved</div>
+                                            </td>
+                                        @elseif($request->approved == '3')
+                                            <td>
+                                                <div class="badge badge-light-danger">Rejected</div>
+                                            </td>
+                                        @else
+                                            <td>
+                                                <div class="badge badge-light-warning">Pending</div>
+                                            </td>
+                                        @endif
+                                        <td class="text-center">
+                                            <div class="btn-group" role="group" aria-label="Basic example">
+                                                <a href="{{ route('admin.approval-requests.show', $request->id) }}" class="btn btn-warning btn-sm waves-effect waves-light">Show</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                @else
+                    <div class="table-responsive">
+                        <p class="text-center">No Listing found.</p>
+                    </div>
+                @endif
+                </div>
+                @if (count($approval_requests) > 5)
+                <div class="card-footer text-center">
+                    <a href="{{ route('admin.approval-requests.index') }}" class="btn btn-outline-light square waves-effect waves-light">View All</a>
+                </div>
+                @endif
+            </div>
+        </div>
+     </div>
+    <!-- Recent  Approval Requests ends Here-->
 </section>
 
 <!-- Confirm Delete for Player  Starts Here-->
