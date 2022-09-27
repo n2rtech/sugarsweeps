@@ -11,7 +11,7 @@
     </div>
     <div class="row">
         <div class="col-lg-6 col-md-6 align-items-stretch m-auto register-bg">
-            <form method="POST" action="{{ route('register') }}" id="registrationForm">
+            <form method="POST" action="{{ route('register') }}" id="registrationForm" enctype="multipart/form-data">
                 @csrf
 
                 <div class="row mb-3">

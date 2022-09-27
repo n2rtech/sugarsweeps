@@ -77,6 +77,24 @@
                             </select>
                         </div>
                     </div>
+
+                    <div class="form-group row">
+                        <label for="statuses" class="col-sm-2 col-form-label">Photo ID</label>
+                        <div class="col-sm-10">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="file" name="photo_id" onchange="loadPreview(this);">
+                                <label class="custom-file-label" for="file">Choose File</label>
+                            </div>
+                            <img id="preview_img" src="{{ $player->photo_id }}" class="mt-2" width="260"
+                            height="160" />
+                        </div>
+                        @error('photo_id')
+                            <div class="invalid-feedback text-white">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+
                 </form>
             </div>
             <div class="card-footer text-right">
@@ -86,3 +104,22 @@
     </div>
 </div>
 @endsection
+@push('scripts')
+<script>
+    function loadPreview(input, id) {
+        id = id || '#preview_img';
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $(id)
+                    .attr('src', e.target.result)
+                    .width(260)
+                    .height(160);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+@endpush

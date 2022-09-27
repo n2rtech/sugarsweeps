@@ -21,6 +21,7 @@ a {
     color: #DB0038 !important;
 }
 
+
 a:hover {
     color: #00cc81;
     text-decoration: none;
@@ -1409,6 +1410,9 @@ input:focus, textarea:focus, select:focus {
     }
 }
 
+.invalid-feedback {
+    display: block;
+}
 /*--------------------------------------------------------------
 # Contact
 --------------------------------------------------------------*/

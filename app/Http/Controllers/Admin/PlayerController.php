@@ -120,6 +120,8 @@ class PlayerController extends Controller
     public function edit($id)
     {
         $player = User::find($id);
+        $player->photo_id = isset($player->photo_id) ? asset('storage/uploads/users/'.$player->photo_id) : 'https://via.placeholder.com/260x160.png?text=260+x+160+px' ;
+
         return view('admin.players.edit', compact('player'));
     }
 
