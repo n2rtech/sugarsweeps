@@ -9,6 +9,7 @@ use App\Models\Notification;
 use App\Models\PaymentMethod;
 use App\Models\RedeemRequest;
 use App\Models\Setting;
+use App\Models\TransactionHistory;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -204,11 +205,13 @@ class IndexController extends Controller
     }
 
     public function terms(){
-        return view('frontend.terms-and-conditions');
+        $terms = Setting::where('type', 'terms-and-conditions')->value('value');
+        return view('frontend.terms-and-conditions', compact('terms'));
     }
 
     public function privacyPolicy(){
-        return view('frontend.privacy-policy');
+        $privacy = Setting::where('type', 'privacy-policy')->value('value');
+        return view('frontend.privacy-policy', compact('privacy'));
     }
 
     public function settings(){
@@ -218,7 +221,8 @@ class IndexController extends Controller
     }
 
     public function transactions(){
-        return view('frontend.transactions');
+        $histories = TransactionHistory::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->paginate('20');
+        return view('frontend.transactions', compact('histories'));
     }
 
     public function notifications(){

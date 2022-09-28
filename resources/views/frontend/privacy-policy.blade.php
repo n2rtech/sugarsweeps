@@ -9,7 +9,10 @@
             <h2><span class="text-primary">Privacy Policy</span></h2>
         </div>
     </div>
-    <div class="row">
+    <div class="row mb-5">
+        <div class="col-lg-10 col-md-10 align-items-stretch m-auto text-white">
+            {!! $terms['content'] !!}
+        </div>
     </div>
 </section>
 <!-- ======= End Privacy Policy Section ======= -->

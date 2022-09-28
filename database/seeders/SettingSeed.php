@@ -25,7 +25,7 @@ class SettingSeed extends Seeder
             Setting::create( [
             'id'=>2,
             'type'=>'privacy-policy',
-            'value'=> ["content" => "Privacy Policy Page Content"],
+            'value'=> ["content" => "Privacy Policy Page Content will be managed in Admin > Settings > Privacy Policy"],
             'created_at'=>'2022-08-21 02:30:49',
             'updated_at'=>'2022-08-21 02:30:49'
             ] );
@@ -33,7 +33,7 @@ class SettingSeed extends Seeder
             Setting::create( [
             'id'=>3,
             'type'=>'terms-and-conditions',
-            'value'=> ["content" => "Terms & Conditions Page Content"],
+            'value'=> ["content" => "Terms & Conditions Page Content  will be managed in Admin > Settings > Terms"],
             'created_at'=>'2022-08-21 02:30:49',
             'updated_at'=>'2022-08-21 02:30:49'
             ] );
