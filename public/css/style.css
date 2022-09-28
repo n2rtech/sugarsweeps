@@ -194,7 +194,9 @@ h6 {
     position: relative;
     white-space: nowrap;
 }
-
+.dropdown-menu a{
+    color: #000!important;
+}
 .nav-menu a {
     display: block;
     position: relative;
@@ -609,6 +611,7 @@ section {
     background: url(../img/our-game-bg.jpg) top center;
     background-size: cover;
     position: relative;
+    background-repeat: no-repeat;
 }
 
 .section-bg {
@@ -2019,7 +2022,34 @@ Responsive
       font-weight: 600;
     }
     #hero {
-      height: 600px;
+      background: url("../img/mob-hero-bg.jpg") top center;
+      background-size: cover;
+      position: relative;
+    }
+    #games {
+        background: url(../img/mob-our-game-bg.jpg) top center;
+        background-size: cover;
+        position: relative;
+        background-repeat: no-repeat;
+    }
+    #reload{
+        background: url(../img/mob-reload-bg.jpg) top center;
+        background-size: cover;
+        position: relative;
+        background-repeat: no-repeat;
+    }
+    .redeems{
+        background: url(../img/mob-redeem-bg.jpg) top center;
+        background-size: cover;
+        position: relative;
+        background-repeat: no-repeat;
+        height: 1350px;
+    }
+    #footer{
+        background: url(../img/mob-footer-bg.jpg) top center;
+        background-size: cover;
+        position: relative;
+        background-repeat: no-repeat;
     }
     #hero h2 {
         font-size: 18px;
