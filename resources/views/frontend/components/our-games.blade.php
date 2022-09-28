@@ -8,49 +8,66 @@
         </div>
 
         <div class="row">
-            @foreach ($platforms as $platform)
-                <div class="card col-6 col-sm-4 col-md-3 my-3">
-                    <div class="row mt-3">
-                        <table class="h-100 w-100">
-                            <tbody>
-                                <tr>
-                                    <td class="w-100 col-6 text-center font-weight-bold align-middle">
-                                        <img src="{{ $platform->image }}" alt="" class="img-fluid">
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="row h-25 mt-3 @guest mb-3 @endguest">
-                        <table class="h-100 w-100">
-                            <tbody>
-                                <tr>
-                                    <td class="w-100 col-6 text-center font-weight-bold align-middle">
-                                        <a href="{{ $platform->download_link }}" target="_blank"
-                                            class="btn btn-sm btn-outline-danger">Download</a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    @auth
-                    <div class="row h-50 mt-4 mb-3">
-                        <table class="h-100 w-100 f-14">
-                            <tbody>
-                                <tr>
-                                    <td class="col-3 text-left font-weight-bold align-middle">Username</td>
-                                    <td class="col-9 text-right align-middle">{{ getUsername($platform->id) }}</td>
-                                </tr>
-                                <tr>
-                                    <td class="col-3 text-left font-weight-bold align-middle">Password</td>
-                                    <td class="col-9 text-right align-middle">{{ getPassword($platform->id) }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    @endauth
+            <div class="col-sm-6 mt-5">
+                <div class="game-pic"><img src="{{ asset('img/fire.png') }}" alt="Fire Kirin" class="img-responsive">
+                    <span class="credential-bg">
+                        <ul class="list-unstyled button-group text-center">
+                            <li><a href="#" class="btn btn-download">Download</a></li>
+                            <li>
+                                <ul class="list-unstyled">
+                                    <li><strong>User:</strong><span>John</span></li>
+                                    <li><strong>User:</strong><span>John</span></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </span>
                 </div>
-            @endforeach
+            </div>
+            <div class="col-sm-6 mt-5">
+                <div class="game-pic"><img src="{{ asset('img/fire.png') }}" alt="Fire Kirin" class="img-responsive">
+                    <span class="credential-bg">
+                        <ul class="list-unstyled button-group text-center">
+                            <li><a href="#" class="btn btn-download">Download</a></li>
+                            <li>
+                                <ul class="list-unstyled">
+                                    <li><strong>User:</strong><span>John</span></li>
+                                    <li><strong>User:</strong><span>John</span></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-6 mt-5">
+                <div class="game-pic"><img src="{{ asset('img/fire.png') }}" alt="Fire Kirin" class="img-responsive">
+                    <span class="credential-bg">
+                        <ul class="list-unstyled button-group text-center">
+                            <li><a href="#" class="btn btn-download">Download</a></li>
+                            <li>
+                                <ul class="list-unstyled">
+                                    <li><strong>User:</strong><span>John</span></li>
+                                    <li><strong>User:</strong><span>John</span></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-6 mt-5">
+                <div class="game-pic"><img src="{{ asset('img/fire.png') }}" alt="Fire Kirin" class="img-responsive">
+                    <span class="credential-bg">
+                        <ul class="list-unstyled button-group text-center">
+                            <li><a href="#" class="btn btn-download">Download</a></li>
+                            <li>
+                                <ul class="list-unstyled">
+                                    <li><strong>User:</strong><span>John</span></li>
+                                    <li><strong>User:</strong><span>John</span></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         </div>
 </section>
 <!-- End Games Section -->

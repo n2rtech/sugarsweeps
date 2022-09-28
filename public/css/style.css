@@ -951,7 +951,42 @@ input:focus, textarea:focus, select:focus {
 .cta .cta-btn:hover {
     background: #ffd400;
 }
-
+.game-pic{
+    display: inline-flex;
+    position: relative;
+}
+.game-pic img{
+    z-index: 1;
+}
+.credential-bg {
+    background: #70473685;
+    border: 5px solid #dad1ba;
+    border-radius: 4px;
+    max-height: 180px;
+    position: relative;
+    right: 12%;
+    top: 47px;
+}
+.credential-bg li {
+    color: #fff;
+    font-size: 14px;
+}
+.credential-bg .button-group {
+    padding-left: 85px;
+    padding-right: 30px;
+    padding-top: 30px;
+}
+.button-group ul{
+    padding-top: 20px;
+}
+.btn-download{
+    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(183,134,80,1) 100%);
+    border-radius: 50px;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 15px 65px;
+    font-family: 'Wonder Bar';
+}
 @media (max-width: 1024px) {
     .cta {
         background-attachment: scroll;
