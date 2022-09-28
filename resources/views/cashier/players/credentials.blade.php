@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.cashier')
 @section('title', 'Player Credentials')
 @section('content')
     <div class="content-header row">
@@ -17,7 +17,7 @@
             </div>
         </div>
     </div>
-    @include('admin.sections.flash-message')
+    @include('cashier.sections.flash-message')
     <div class="content-body">
         <div class="card">
             <div class="card-content">

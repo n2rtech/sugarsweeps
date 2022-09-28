@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Cashier;
 
 use App\Http\Controllers\Controller;
 use App\Models\GamingAccount;
@@ -17,7 +17,7 @@ class ApprovalRequestController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:admin');
+        $this->middleware('auth:cashier');
     }
     /**
      * Display a listing of the resource.
@@ -62,7 +62,7 @@ class ApprovalRequestController extends Controller
 
         $players = $players->paginate(20);
 
-        return view('admin.approval-requests.list', compact('players', 'filter_box', 'filter_name', 'filter_email', 'filter_phone', 'filter_date', 'filter_username'));
+        return view('cashier.approval-requests.list', compact('players', 'filter_box', 'filter_name', 'filter_email', 'filter_phone', 'filter_date', 'filter_username'));
     }
 
     /**
@@ -97,7 +97,7 @@ class ApprovalRequestController extends Controller
         $player = User::find($id);
         $player->photo_id = isset($player->photo_id) ? asset('storage/uploads/users/'.$player->photo_id) : 'https://via.placeholder.com/260x160.png?text=260+x+160+px' ;
 
-        return view('admin.approval-requests.show', compact('player'));
+        return view('cashier.approval-requests.show', compact('player'));
     }
 
     /**
@@ -161,8 +161,8 @@ class ApprovalRequestController extends Controller
                 if(!$notification_exists){
                     $notification                       = new Notification();
                     $notification->type                 = 'account-created';
-                    $notification->sender               = 'admin';
-                    $notification->sender_id            = Auth::guard('admin')->user()->id;
+                    $notification->sender               = 'cashier';
+                    $notification->sender_id            = Auth::guard('cashier')->user()->id;
                     $notification->receiver_id          = $id;
                     $notification->gaming_account_id    = $account->id;
                     $notification->save();
@@ -171,7 +171,7 @@ class ApprovalRequestController extends Controller
         }
 
 
-        return redirect()->route('admin.approval-requests.index')->with('success', 'Player Account has been approved successfully');
+        return redirect()->route('cashier.approval-requests.index')->with('success', 'Player Account has been approved successfully');
     }
 
     public function reject($id)
@@ -180,6 +180,6 @@ class ApprovalRequestController extends Controller
         $player->approved   = '3';
         $player->save();
 
-        return redirect()->route('admin.approval-requests.index')->with('error', 'Player Account has been rejected successfully');
+        return redirect()->route('cashier.approval-requests.index')->with('error', 'Player Account has been rejected successfully');
     }
 }

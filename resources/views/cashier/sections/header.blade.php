@@ -61,7 +61,7 @@
                         </ul>
                     </li>
                     <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                            <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600">{{ Auth::guard('cashier')->user()->name }}</span><span class="user-status">Available</span></div><span><img class="round" src="{{ asset('assets/images/portrait/small/avatar-s-11.jpg') }}" alt="avatar" height="40" width="40"></span>
+                            <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600">{{ Auth::guard('cashier')->user()->name }}</span><span class="user-status">Cashier</span></div><span><img class="round" src="{{ asset('assets/images/portrait/small/avatar-s-11.jpg') }}" alt="avatar" height="40" width="40"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="{{ route('cashier.my-account.edit', Auth::guard('cashier')->id()) }}"><i class="feather icon-user"></i> My Account</a>

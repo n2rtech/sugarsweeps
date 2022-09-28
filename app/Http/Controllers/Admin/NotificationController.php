@@ -32,10 +32,6 @@ class NotificationController extends Controller
 
             $notification->user = User::find($notification->sender_id);
 
-            if($notification->type == 'request-account'){
-                $notification->data = GamingAccount::find($notification->gaming_account_id)->load('platform');
-            }
-
             if($notification->type == 'credit-requested'){
                 $notification->data = CreditRequest::find($notification->credit_request_id)->load('platform');
             }

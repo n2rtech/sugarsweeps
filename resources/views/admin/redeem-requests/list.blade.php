@@ -143,17 +143,26 @@
                                 <tbody>
                                     @foreach ($redeem_requests as $request)
                                         <tr>
-                                            <td>{{ Carbon\Carbon::parse($request->created_at)->format('d-m-Y') }} {{ Carbon\Carbon::parse($request->created_at)->format('h:i:s') }}
+                                            <td>{{ Carbon\Carbon::parse($request->created_at)->format('d-m-Y') }} <br/>
+                                                {{ Carbon\Carbon::parse($request->created_at)->format('h:i:s') }}
                                             </td>
                                             <td>
-                                                @if (isset($request->cashier))
-                                                    {{ $request->cashier->name }}
-                                                @elseif($request->status == '1' && is_null($request->cashier))
-                                                    <span class="badge badge-outline-danger badge-pill">Admin</span>
+                                                @if($request->status == '1')
+                                                    @isset($request->cashier)
+                                                        <div class="badge badge-light-success">{{ $request->cashier->name }}</div>
+                                                    @else
+                                                        <div class="badge badge-light-warning">Admin</div>
+                                                    @endisset
+                                                @elseif($request->status == '2')
+                                                    @isset($request->cashier)
+                                                        <div class="badge badge-light-success">{{ $request->cashier->name }}</div>
+                                                    @else
+                                                        <div class="badge badge-light-warning">Admin</div>
+                                                    @endisset
                                                 @else
-                                                    N/A
-                                                @endisset
-                                        </td>
+                                                    <div class="badge badge-light-danger">N/A</div>
+                                                @endif
+                                            </td>
                                         <td>{{ $request->user->name }}</td>
                                         <td>{{ $request->platform->platform }}</td>
                                         <td>
@@ -293,37 +302,37 @@
 </div>
 <div class="modal fade" id="modal-show-credentials" tabindex="-1" role="dialog"
 aria-labelledby="modal-show-credentials" style="display: none;" aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered modal-min" role="document">
-    <div class="modal-content">
+    <div class="modal-dialog modal-dialog-centered modal-min" role="document">
+        <div class="modal-content">
 
-        <div class="modal-body text-center">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                    aria-hidden="true">×</span></button>
-            <i class="flaticon-secure-shield d-block"></i>
-            <h2 id="platform">Payout Details</h2>
-            <p>Given below are player payment details</p>
-            <div class="table-responsive">
-                <table class="table table-bordered thead-primary">
-                    <tbody>
-                        <tr>
-                            <th scope="row" class="text-danger">Payment Method</th>
-                            <td id="paymentmethod"></td>
-                        </tr>
-                        <tr id="cryptocurrency">
-                            <th scope="row" class="text-danger">Bitcoin Address</th>
-                            <td id="bitcoin_address"></td>
-                        </tr>
-                        <tr id="cashapp">
-                            <th scope="row" class="text-danger">Cash Tag</th>
-                            <td id="cashtag"></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="modal-body text-center">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+                <i class="flaticon-secure-shield d-block"></i>
+                <h2 id="platform">Payout Details</h2>
+                <p>Given below are player payment details</p>
+                <div class="table-responsive">
+                    <table class="table table-bordered thead-primary">
+                        <tbody>
+                            <tr>
+                                <th scope="row" class="text-danger">Payment Method</th>
+                                <td id="paymentmethod"></td>
+                            </tr>
+                            <tr id="cryptocurrency">
+                                <th scope="row" class="text-danger">Bitcoin Address</th>
+                                <td id="bitcoin_address"></td>
+                            </tr>
+                            <tr id="cashapp">
+                                <th scope="row" class="text-danger">Cash Tag</th>
+                                <td id="cashtag"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
 
+        </div>
     </div>
-</div>
 </div>
 @endsection
 @push('scripts')
