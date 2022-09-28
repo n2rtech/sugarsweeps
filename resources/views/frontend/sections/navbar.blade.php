@@ -3,8 +3,10 @@
     <div class="container-fluid">
 
         <div class="row justify-content-center">
-            <div class="col-xl-9 d-flex align-items-center justify-content-between">
-                <h1 class="logo"><a href="{{ route('index') }}">Sugar Sweeps</a></h1>
+            <div class="col-xl-10 d-flex align-items-center justify-content-between">
+            <div class="logo-sn logo-sm">
+                <a class="navbar-brand" href="{{ route('index') }}"> <img src="{{ asset('assets/images/logo.png') }}" alt="Logo" class="img-responsive"></a>
+            </div>
                 <!-- Uncomment below if you prefer to use an image logo -->
                 <!-- <a href="#" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 

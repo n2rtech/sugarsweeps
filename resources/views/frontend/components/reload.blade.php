@@ -3,7 +3,7 @@
     <div class="container">
 
         <div class="section-title">
-            <h2>RE<span class="text-primary">LOAD</span></h2>
+            <h2>RELOAD</h2>
         </div>
 
         <!-- ======= CashApp Reload Section ======= -->

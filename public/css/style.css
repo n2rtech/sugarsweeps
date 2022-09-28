@@ -8,6 +8,18 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+@font-face {
+  font-family: 'Cocogoose Pro Bold';
+  src: url("../assets/fonts/Cocogoose-Pro-Bold.ttf");
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Wonder Bar';
+  src: url("../assets/fonts/wonderbar.ttf");
+  font-weight: 800;
+  font-style: normal;
+}
 body {
     font-family: "Open Sans", sans-serif;
     color: #444444;

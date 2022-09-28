@@ -3,10 +3,8 @@
     <div class="container">
 
         <div class="section-title">
-            <h2>OUR <span class="text-primary">GAMES</span></h2>
-            <p class="text-center">WE PROVIDE THE MOST POPULAR GAMES IN THE MARKET. REGISTER AN ACCOUNT, REQUEST A
-                USERNAME AND PASSWORD FOR THE GAME YOU WANT TO PLAY, THEN RELOAD YOUR ACCOUNT AND WIN BIG! REQUEST
-                TO REDEEM AT ANY TIME FROM YOUR DRAGONSTAKES ACCOUNT.</p>
+            <h2>OUR <span>GAMES</span></h2>
+            <p class="text-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
         </div>
 
         <div class="row">
