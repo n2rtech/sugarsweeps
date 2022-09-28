@@ -47,3 +47,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('my-account', MyAccountController::class);
 
 Route::post('change-password', [ChangePasswordController::class,'changePassword'])->name('change-password');
+
+Route::get('test-email', [IndexController::class, 'email']);

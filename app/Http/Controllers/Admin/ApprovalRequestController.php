@@ -11,6 +11,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class ApprovalRequestController extends Controller
@@ -177,6 +178,16 @@ class ApprovalRequestController extends Controller
 
         }
 
+        $to_name        =  $player->name;
+        $to_email       =  $player->email;
+        $data_email     =  array("name"=> $player->name);
+
+        Mail::send("frontend.emails.approved", $data_email, function($message) use ($to_name, $to_email) {
+            $message->to($to_email, $to_name)
+            ->subject("Review Completed! Greetings from Sugarsweeps");
+            $message->from("websales9999@gmail.com","Sugarsweeps");
+        });
+
 
         return redirect()->route('admin.approval-requests.index')->with('success', 'Player Account has been approved successfully');
     }
@@ -186,6 +197,16 @@ class ApprovalRequestController extends Controller
         $player             = User::find($id);
         $player->approved   = '3';
         $player->save();
+
+        $to_name        =  $player->name;
+        $to_email       =  $player->email;
+        $data_email     =  array("name"=> $player->name);
+
+        Mail::send("frontend.emails.rejected", $data_email, function($message) use ($to_name, $to_email) {
+            $message->to($to_email, $to_name)
+            ->subject("Review Completed! Greetings from Sugarsweeps");
+            $message->from("websales9999@gmail.com","Sugarsweeps");
+        });
 
         return redirect()->route('admin.approval-requests.index')->with('error', 'Player Account has been rejected successfully');
     }
