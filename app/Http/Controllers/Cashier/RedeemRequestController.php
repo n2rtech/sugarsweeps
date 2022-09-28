@@ -49,7 +49,7 @@ class RedeemRequestController extends Controller
 
         if(isset($name)){
             $redeem_requests->whereHas('user', function ($query) use ($name){
-                $query->where(DB::raw("concat(firstname, ' ', lastname)"), 'LIKE', "%".$name."%");
+                $query->where('name', 'LIKE', "%".$name."%");
             });
         }
 
@@ -109,7 +109,7 @@ class RedeemRequestController extends Controller
 
         $platforms = GamingPlatform::get(['id', 'platform']);
         $methods = PaymentMethod::get(['id', 'method']);
-        $cashiers = Cashier::get(['id', 'firstname', 'lastname']);
+        $cashiers = Cashier::get(['id', 'name']);
         return view('cashier.redeem-requests.list', compact('filter_box', 'redeem_requests', 'platforms', 'methods', 'date', 'name', 'email', 'phone', 'gaming_platform',  'period', 'username', 'payment_method', 'request_cashier', 'request_status', 'cashiers'));
     }
 

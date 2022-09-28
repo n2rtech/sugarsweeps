@@ -42,7 +42,7 @@ class CreditRequestController extends Controller
         if (isset($filter_name)) {
             $requests = $requests->whereHas('user', function ($q) use ($filter_name) {
                 $q->where(function ($q) use ($filter_name) {
-                    $q->where(DB::raw("concat(firstname, ' ', lastname)"), 'LIKE', "%".$filter_name."%");
+                    $q->where('name', 'LIKE', "%".$filter_name."%");
                 });
             });
         }
@@ -68,7 +68,7 @@ class CreditRequestController extends Controller
         }
 
         $requests           = $requests->paginate(20);
-        $cashiers           = Cashier::get(['id', 'firstname', 'lastname']);
+        $cashiers           = Cashier::get(['id', 'name']);
         $platforms          = GamingPlatform::get(['id', 'platform']);
 
         return view('cashier.deposit-requests.list', compact('requests', 'filter_name', 'filter_phone', 'filter_cashier', 'filter_platform', 'filter_status', 'filter_box', 'cashiers', 'platforms'));

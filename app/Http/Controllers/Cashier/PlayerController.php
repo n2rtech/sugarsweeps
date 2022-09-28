@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Cashier;
 
 use App\Http\Controllers\Controller;
+use App\Models\GamingPackage;
+use App\Models\GamingPlatform;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class PlayerController extends Controller
 {
@@ -35,7 +38,7 @@ class PlayerController extends Controller
         $players = User::orderBy('id', 'desc');
 
         if(isset($filter_name)){
-            $players =  $players->where(DB::raw("concat(firstname, ' ', lastname)"), 'LIKE', "%".$filter_name."%");
+            $players =  $players->where('name', 'LIKE', "%".$filter_name."%");
         }
         if(isset($filter_email)){
             $players =  $players->whereEmail($filter_email);
@@ -104,6 +107,7 @@ class PlayerController extends Controller
     public function show($id)
     {
         $player = User::find($id);
+        $player->photo_id = isset($player->photo_id) ? asset('storage/uploads/users/'.$player->photo_id) : 'https://via.placeholder.com/260x160.png?text=260+x+160+px' ;
         return view('cashier.players.show', compact('player'));
     }
 
@@ -153,5 +157,17 @@ class PlayerController extends Controller
     {
         $user     = User::find($id)->delete();
         return redirect()->route('cashier.players.index')->with('success', 'Player deleted successfully.');
+    }
+
+    public function credentials($id)
+    {
+        $package_id = GamingPackage::where('user_id', $id)->value('id');
+        $platforms = GamingPlatform::get();
+        foreach ($platforms as $platform) {
+            $platform->image = isset($platform->image) ? asset('storage/uploads/gaming-platforms/' . $platform->image) : asset('assets/img/game-placeholder.jpg');
+            $platform->username = GamingPackage::where('id', $id)->value(Str::lower(str_replace(' ', '', $platform->platform)));
+        }
+        $package   = GamingPackage::where('id', $package_id)->first();
+        return view('cashier.players.credentials', compact('platforms', 'package'));
     }
 }

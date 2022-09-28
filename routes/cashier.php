@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Cashier\ApprovalRequestController;
 use App\Http\Controllers\Cashier\Auth\ChangePasswordController;
 use App\Http\Controllers\Cashier\Auth\ForgotPasswordController;
 use App\Http\Controllers\Cashier\Auth\LoginController;
@@ -57,6 +58,16 @@ Route::group(['prefix' => 'cashier', 'as' => 'cashier.'], function () {
     |--------------------------------------------------------------------------
     */
     Route::resource('players', PlayerController::class);
+    Route::get('players/credentials/{id}', [PlayerController::class, 'credentials'])->name('players.credentials');
+
+    /*
+    |--------------------------------------------------------------------------
+    | Approval Request Route
+    |--------------------------------------------------------------------------
+    */
+    Route::resource('approval-requests', ApprovalRequestController::class);
+    Route::get('approval-requests/approve/{id}', [ApprovalRequestController::class, 'approve'])->name('approval-requests.approve');
+    Route::get('approval-requests/reject/{id}', [ApprovalRequestController::class, 'reject'])->name('approval-requests.reject');
 
 
     /*

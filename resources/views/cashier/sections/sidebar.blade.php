@@ -14,6 +14,21 @@
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li class="nav-item {{ request()->is('cashier') ? 'active' : '' }}"><a href="{{ route('cashier.dashboard') }}"><i class="feather icon-home"></i><span class="menu-title" data-i18n="Dashboard">Dashboard</span></a></li>
 
+            <li class="nav-item {{ request()->is('cashier/players') || request()->is('cashier/players/*') ? 'active' : '' }}"><a href="{{ route('cashier.players.index') }}"><i class="feather icon-users"></i><span class="menu-title" data-i18n="Players">Players</span></a></li>
+
+
+            <li class="nav-item {{ request()->is('cashier/approval-requests') || request()->is('cashier/approval-requests/*') ? 'active' : '' }}"><a href="{{ route('cashier.approval-requests.index') }}"><i class="feather icon-shield"></i><span class="menu-title" data-i18n="Players">Approval Requests</span></a></li>
+
+            <li class="nav-item {{ request()->is('cashier/deposit-requests') || request()->is('cashier/deposit-requests/*') ? 'active' : '' }}"><a href="{{ route('cashier.deposit-requests.index') }}"><i class="feather icon-download-cloud"></i><span class="menu-title" data-i18n="Deposit Requests">Deposit Requests</span></a></li>
+
+            <li class="nav-item {{ request()->is('cashier/redeem-requests') || request()->is('cashier/redeem-requests/*') ? 'active' : '' }}"><a href="{{ route('cashier.redeem-requests.index') }}"><i class="feather icon-upload-cloud"></i><span class="menu-title" data-i18n="Redeem Requests">Redeem Requests</span></a></li>
+
+
+            <li class="nav-item {{ request()->is('cashier/notification-center') || request()->is('cashier/notification-center/*') ? 'active' : '' }}"><a href="{{ route('cashier.notification-center.index') }}"><i class="feather icon-bell"></i><span class="menu-title" data-i18n="Notification Center">Notification Center</span></a></li>
+
+            <li class="nav-item {{ request()->is('cashier/transaction-history') || request()->is('cashier/transaction-history/*') ? 'active' : '' }}"><a href="{{ route('cashier.transaction-history.index') }}"><i class="feather icon-file-text"></i><span class="menu-title" data-i18n="Transaction History">Transaction History</span></a></li>
+
+
             <li class="nav-item {{ request()->is('cashier/change-password') || request()->is('cashier/my-account/*') ? 'has-sub sidebar-group-active open' : '' }}"><a href="#"><i class="feather icon-settings"></i><span class="menu-title" data-i18n="Ecommerce">Settings</span></a>
                 <ul class="menu-content">
                     <li class="{{ request()->is('cashier/change-password') ? 'active' : '' }}"><a href="{{ route('cashier.password.form') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Shop">Change Password</span></a>

@@ -1,11 +1,11 @@
 @extends('layouts.cashier')
-@section('title', 'Players')
+@section('title', 'Approval Requests')
 @section('content')
     <div class="content-header row">
         <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
                 <div class="col-12">
-                    <h2 class="content-header-title float-left mb-0">Players</h2>
+                    <h2 class="content-header-title float-left mb-0">Approval Requests</h2>
                 </div>
             </div>
         </div>
@@ -24,7 +24,7 @@
             <div class="card-content">
                 <div class="card-body">
                     <div class="col-md-12" id="filterBox">
-                        <form action="{{ route('cashier.players.index') }}">
+                        <form action="{{ route('cashier.approval-requests.index') }}">
                             <div class="form-row">
                                 <div class="col-xl-2 col-md-12">
                                     <div class="input-group">
@@ -52,21 +52,14 @@
                                 </div>
                                 <div class="col-xl-2 col-md-12">
                                     <div class="input-group">
-                                        <select class="form-control" id="statuses" name="status">
-                                            <option value="">Select Approval</option>
-                                            <option value="0" @if ($filter_status == '0') selected @endif>Pending
-                                            </option>
-                                            <option value="2" @if ($filter_status == '1') selected @endif>
-                                                Approved</option>
-                                            <option value="3" @if ($filter_status == '3') selected @endif>
-                                                    Rejected</option>
-                                        </select>
+                                        <input type="date" class="form-control" placeholder="Date"
+                                            name="date" value="{{ $filter_date }}">
                                     </div>
                                 </div>
                                 <div class="col-xl-2 col-md-12 text-right">
                                     <button class="btn btn-md btn-secondary" type="submit"><i
                                             class="feather icon-search"></i></i></button>
-                                    <a href="{{ route('cashier.players.index') }}" class="btn btn-md btn-warning"
+                                    <a href="{{ route('admin.players.index') }}" class="btn btn-md btn-warning"
                                         type="submit"><i class="feather icon-refresh-cw"></i></a>
                                 </div>
                             </div>
@@ -84,7 +77,6 @@
                                         <th scope="col">Email</th>
                                         <th scope="col">Phone</th>
                                         <th scope="col">Approval</th>
-                                        <th scope="col" class="text-center">Game Credentials</th>
                                         <th scope="col" class="text-center">Action</th>
                                     </tr>
                                 </thead>
@@ -109,15 +101,8 @@
                                                 </td>
                                             @endif
                                             <td class="text-center">
-                                                @if ($player->approved == '2')
-                                                    <a href="{{ route('cashier.players.credentials', $player->id) }}" class="btn btn-relief-success btn-sm waves-effect waves-light">Show</a>
-                                                @else
-                                                    <a href="javascript:void(0)" class="btn btn-relief-light btn-sm waves-effect waves-light">N/A</a>
-                                                @endif
-                                            </td>
-                                            <td class="text-center">
                                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                                    <a href="{{ route('cashier.players.show', $player->id) }}" class="btn btn-warning btn-sm waves-effect waves-light"><i class="feather icon-eye"></i></a>
+                                                    <a href="{{ route('cashier.approval-requests.show', $player->id) }}" class="btn btn-warning btn-sm waves-effect waves-light">Show</a>
                                                 </div>
                                             </td>
                                         </tr>

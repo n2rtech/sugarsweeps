@@ -97,7 +97,7 @@
                                         <th>Gaming Platform</th>
                                         <th>Username</th>
                                         <th>Amount</th>
-                                        <th class="text-center">Status</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -106,39 +106,41 @@
                                             <td>{{ Carbon\Carbon::parse($request->created_at)->format('d-m-Y h:i:s') }}
                                             </td>
                                             <td>
-                                                @if (isset($request->cashier))
-                                                    {{ $request->cashier->name }}
-                                                @elseif($request->status == '1' && is_null($request->cashier))
-                                                    <span class="badge badge-outline-danger badge-pill">Admin</span>
+                                                @if($request->status == '1')
+                                                    @isset($request->cashier)
+                                                        <div class="badge badge-light-success">{{ $request->cashier->name }}</div>
+                                                    @else
+                                                        <div class="badge badge-light-warning">Admin</div>
+                                                    @endisset
                                                 @else
-                                                    N/A
-                                                @endisset
-                                        </td>
-                                        <td>{{ $request->user->name }}</td>
-                                        <td>{{ $request->user->email }}</td>
-                                        <td class="text-center">{{ $request->user->phone }}</td>
-                                        <td>{{ $request->platform->platform }}</td>
-                                        <td>{{ $request->username }}</td>
-                                        <td>$ {{ $request->amount }}</td>
-                                        @if ($request->status == '0')
-                                            <td class="text-center">
-                                                <div class="button-group">
-                                                    <a href="javascript:void(0)"
-                                                        onclick="confirmAccept({{ $request->id }});"
-                                                        class="btn btn-dark btn-sm">Process</a>
-                                                </div>
+                                                    <div class="badge badge-light-danger">N/A</div>
+                                                @endif
                                             </td>
-                                        @endif
-                                        @if ($request->status == '1')
-                                            <td class="text-center">
-                                                <span class="text-success">Approved</span>
-                                            </td>
-                                        @endif
-                                        @if ($request->status == '2')
-                                            <td class="text-center">
-                                                <span class="text-danger">Rejected</span>
-                                            </td>
-                                        @endif
+                                            <td>{{ $request->user->name }}</td>
+                                            <td>{{ $request->user->email }}</td>
+                                            <td class="text-center">{{ $request->user->phone }}</td>
+                                            <td>{{ $request->platform->platform }}</td>
+                                            <td>{{ $request->username }}</td>
+                                            <td>$ {{ $request->amount }}</td>
+                                            @if ($request->status == '0')
+                                                <td class="text-center">
+                                                    <div class="button-group">
+                                                        <a href="javascript:void(0)"
+                                                            onclick="confirmAccept({{ $request->id }});"
+                                                            class="btn btn-warning btn-sm">Process</a>
+                                                    </div>
+                                                </td>
+                                            @endif
+                                            @if ($request->status == '1')
+                                                <td class="text-center">
+                                                    <span class="text-success">Approved</span>
+                                                </td>
+                                            @endif
+                                            @if ($request->status == '2')
+                                                <td class="text-center">
+                                                    <span class="text-danger">Rejected</span>
+                                                </td>
+                                            @endif
                                     </tr>
                                 @endforeach
                             </tbody>

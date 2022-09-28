@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Notification;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -84,6 +85,13 @@ class RegisterController extends Controller
         }
 
         $user->save();
+
+        $notification                       = new Notification();
+        $notification->type                 = 'request-account';
+        $notification->sender               = 'player';
+        $notification->sender_id            = $user->id;
+        $notification->receiver_id          = 0;
+        $notification->save();
 
         return $user;
     }
