@@ -15,7 +15,7 @@ class CreateNotificationsTable extends Migration
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
-            $table->enum('type', ['notification','request-account', 'account-created', 'account-rejected','credit-requested', 'credit-added', 'credit-rejected', 'transfer-request', 'transfer-done', 'transfer-rejected', 'redeem-request', 'redeem-done', 'redeem-rejected'])->nullable();
+            $table->enum('type', ['notification','request-account', 'account-approved','account-created', 'account-rejected','credit-requested', 'credit-added', 'credit-rejected', 'transfer-request', 'transfer-done', 'transfer-rejected', 'redeem-request', 'redeem-done', 'redeem-rejected'])->nullable();
             $table->enum('sender', ['player', 'admin', 'cashier'])->default('admin');
             $table->unsignedBigInteger('sender_id')->nullable();
             $table->unsignedBigInteger('receiver_id')->nullable();

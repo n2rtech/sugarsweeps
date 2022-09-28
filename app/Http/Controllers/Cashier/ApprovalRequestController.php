@@ -140,6 +140,13 @@ class ApprovalRequestController extends Controller
         $player->approved    = '2';
         $player->save();
 
+        $notification                       = new Notification();
+        $notification->type                 = 'account-approved';
+        $notification->sender               = 'cashier';
+        $notification->sender_id            = Auth::guard('cashier')->user()->id;
+        $notification->receiver_id          = $id;
+        $notification->save();
+
         $package                        = GamingPackage::where('status', 0)->whereNull('user_id')->first();
         GamingPackage::where('id', $package->id)->update(['status' => 1, 'user_id' => $id]);
 

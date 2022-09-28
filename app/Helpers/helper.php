@@ -57,10 +57,6 @@ if (!function_exists('getLatestAdminNotifications')) {
 
             $notification->user = User::find($notification->sender_id);
 
-            if ($notification->type == 'request-account') {
-                $notification->data = GamingAccount::find($notification->gaming_account_id)->load('platform');
-            }
-
             if ($notification->type == 'credit-requested') {
                 $notification->data = CreditRequest::find($notification->credit_request_id)->load('platform');
             }
@@ -80,10 +76,6 @@ if (!function_exists('getLatestPlayerNotifications')) {
         foreach ($notifications as $notification) {
 
             $notification->user = User::find($notification->receiver_id);
-
-            if ($notification->type == 'account-created') {
-                $notification->data = GamingAccount::find($notification->gaming_account_id)->load('platform');
-            }
 
             if ($notification->type == 'credit-added') {
                 $notification->data = CreditRequest::find($notification->credit_request_id)->load('platform');
