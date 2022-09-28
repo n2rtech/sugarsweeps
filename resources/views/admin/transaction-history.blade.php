@@ -73,19 +73,19 @@
                                                 </td>
                                             @endif
                                             <td>$ {{ $history->amount }}</td>
-                                            <td>{{ ucfirst($history->type) }}</td>
+                                            <td><div class="badge badge-light-success">{{ ucfirst($history->type) }}</div></td>
                                             <td>
 
                                                 @if ($history->type == 'redeemed')
                                                     <a href="javascript:void(0)"
-                                                        class="btn btn-sm btn-square btn-gradient-warning show-credentials"
+                                                        class="btn btn-relief-success btn-sm waves-effect waves-light show-credentials"
                                                         data-toggle="modal" data-target="#modal-show-credentials"
                                                         data-payment_method="{{ $redeem_request->paymentMethod->method }}"
                                                         data-method="{{ $redeem_request->payment_method_id }}"
                                                         data-bitcoin_address="{{ $redeem_request->bitcoin_address }}"
                                                         data-cashtag="{{ $redeem_request->cashtag }}">Show </a>
                                                 @else
-                                                    N/A
+                                                <a href="javascript:void(0)" class="btn btn-relief-light btn-sm waves-effect waves-light show-credentials">N/A</a>
                                                 @endif
                                             </td>
                                         </tr>
