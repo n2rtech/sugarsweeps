@@ -114,17 +114,16 @@ class IndexController extends Controller
             $credit->save();
 
             // Generate Notification
-
-            $notification                       = new Notification();
-            $notification->type                 = 'credit-requested';
-            $notification->sender               = 'player';
-            $notification->sender_id            = $id;
-            $notification->receiver_id          = 0;
-            $notification->credit_request_id    = $credit->id;
-            $notification->save();
-
-
-
+            $notification_exists =  Notification::where('type', 'credit-requested')->where('sender', 'player')->where('sender_id', $id)->where('credit_request_id', $credit->id)->exists();
+            if(!$notification_exists){
+                $notification                       = new Notification();
+                $notification->type                 = 'credit-requested';
+                $notification->sender               = 'player';
+                $notification->sender_id            = $id;
+                $notification->receiver_id          = 0;
+                $notification->credit_request_id    = $credit->id;
+                $notification->save();
+            }
 
         }else{
 
