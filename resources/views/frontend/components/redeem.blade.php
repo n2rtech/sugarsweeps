@@ -3,7 +3,7 @@
     <div class="container">
 
         <div class="section-title">
-            <h2>RE<span class="text-primary">DEEM</span></h2>
+            <h2>REDEEM</h2>
         </div>
 
         <div class="redeem-form">

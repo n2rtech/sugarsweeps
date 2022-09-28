@@ -1,19 +1,21 @@
 <footer id="footer">
+  <img src="{{ asset('img/cake.png') }}" alt="Footer Dragon" class="img-responsive footer-dragon">
     <div class="container">
-      <h3 class="logo-footer">Sugar Sweeps</h3>
-      <p>Play the best Online Sweepstakes Slotss and Fish Games</p>
-      <div class="social-links">
-        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-      </div>
-      <div class="credits">
-        <a href="{{ route('privacy-policy') }}">Privacy Policy</a> | <a href="{{ route('terms-and-conditions') }}">Terms & Conditions</a>
-      </div>
-      <div class="copyright">
-        © Copyright <strong><span>Sugar Sweeps</span></strong>. All Rights Reserved
-      </div>
+      <div class="social-info">
+            <a href="#" target="_blank"><img src="{{ asset('img/facebook-icon.png') }}" alt="Facebook" class="img-responsive"></a>
+        </div>
+        <div class="footer-info">
+            <ul class="list-unstyled">
+                <li><a href="{{ route('privacy-policy') }}">Privacy Policy</a></li>
+                <li>|</li>
+                <li><a href="{{ route('terms-and-conditions') }}">Terms and Condition</a></li>
+            </ul>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+            <p class="copy-right">© copyright <span>2022</span>Sugarsweeps. all rights
+                reserved</p>
+        </div>
+
+
+
     </div>
   </footer>

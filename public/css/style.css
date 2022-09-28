@@ -20,6 +20,7 @@
   font-weight: 800;
   font-style: normal;
 }
+
 body {
     font-family: "Open Sans", sans-serif;
     color: #444444;
@@ -518,9 +519,10 @@ h6 {
     background: url("../img/hero-bg.jpg") top center;
     background-size: cover;
     position: relative;
+    height: 680px;
 }
 
-#hero:before {
+/*#hero:before {
     content: "";
     background: rgba(0, 0, 0, 0.6);
     position: absolute;
@@ -528,20 +530,22 @@ h6 {
     top: 0;
     left: 0;
     right: 0;
-}
+}*/
 
 #hero .container {
-    padding-top: 72px;
+    padding-top: 215px;
     position: relative;
     text-align: center;
 }
 
 #hero h1 {
-    margin: 0 0 10px 0;
-    font-size: 48px;
+    /* margin: 0 0 10px 0; */
+    font-size: 70px;
     font-weight: 700;
-    line-height: 56px;
+    line-height: 90px;
     color: #fff;
+    text-shadow: 0px 2px 15px #000;
+    font-family: 'Wonder Bar';
 }
 
 #hero h2 {
@@ -622,11 +626,11 @@ h6 {
     border-radius: 0;
 }
 
-@media (min-width: 1024px) {
+/*@media (min-width: 1024px) {
     #hero {
         background-attachment: fixed;
     }
-}
+}*/
 
 @media (max-width: 768px) {
     #hero h1 {
@@ -672,6 +676,11 @@ section {
     padding: 60px 0;
     overflow: hidden;
 }
+#games{
+    background: url(../img/our-game-bg.jpg) top center;
+    background-size: cover;
+    position: relative;
+}
 
 .section-bg {
     background-color: #8fffd6;
@@ -702,8 +711,10 @@ section {
 
 .section-title p {
     margin-bottom: 0;
-    color: #777777;
+    color: #ffffff;
     font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 700;
 }
 
 /*--------------------------------------------------------------
@@ -715,11 +726,16 @@ section {
 }
 
 .game h2 {
-    font-size: 49px;
-    line-height: 70px;
-    color: #1E050B;
-    text-transform: uppercase;
+    font-size: 70px;
+    font-weight: 700;
+    line-height: 90px;
+    color: #fff;
+    font-family: 'Wonder Bar';
     text-align: center;
+    padding-top: 20px;
+}
+.game h2 span{
+    color: #b78650;
 }
 
 .game .content ul {
@@ -775,21 +791,24 @@ section {
 /*--------------------------------------------------------------
 # Reload
 --------------------------------------------------------------*/
-.reload {
-    background: rgb(2, 0, 36);
-    background: linear-gradient(270deg, rgba(2, 0, 36, 1) 0%, rgba(219, 0, 56, 1) 98%);
-}
 
+#reload{
+    background: url(../img/reload-bg.jpg) top center;
+    background-size: cover;
+    position: relative;
+}
 .reload .section-title {
     padding-bottom: 0px;
 }
 
 .reload h2 {
-    font-size: 49px;
-    line-height: 70px;
-    color: whitesmoke;
-    text-transform: uppercase;
+    font-size: 70px;
+    font-weight: 700;
+    line-height: 90px;
+    color: #fff;
+    font-family: 'Wonder Bar';
     text-align: center;
+    padding-top: 20px;
 }
 
 .reload .reload-cash-app {
@@ -799,40 +818,36 @@ section {
 }
 
 .reload .reload-cash-app h4 {
-    font-size: 26px;
+    font-size: 30px;
     color: whitesmoke;
     text-transform: uppercase;
-    font-family: unset;
+    font-family: 'Wonder Bar';
     font-weight: 700;
 }
 
 .reload .cash-tag-description {
     text-align: center;
     color: #fff;
-    background: #ffffff1f;
+    background: #8f00353d;
     font-size: 16px;
     padding: 40px 14px;
     line-height: 34px;
 }
 
 .cash-app-button {
-    background: #fffb00;
-    color: #000000;
-    padding: 12px 25px 12px 25px;
+    background: linear-gradient(180deg, rgba(200,16,102,1) 0%, rgba(153,0,69,1) 100%);
+    color: #fff;
+    padding: 17px 35px 17px 35px;
     white-space: nowrap;
     transition: 0.3s;
     font-size: 16px;
     display: inline-block;
+    font-family: 'Wonder Bar';
 }
 
 .cash-app-button:hover {
     background: #DB0038;
-    color: whitesmoke;
-    padding: 12px 25px 12px 25px;
-    white-space: nowrap;
-    transition: 0.3s;
-    font-size: 16px;
-    display: inline-block;
+    color: #fff;
 }
 
 .reload .reload-bitcoin {
@@ -842,10 +857,10 @@ section {
 }
 
 .reload .reload-bitcoin h4 {
-    font-size: 26px;
+    font-size: 30px;
     color: whitesmoke;
     text-transform: uppercase;
-    font-family: unset;
+    font-family: 'Wonder Bar';
     font-weight: 700;
 }
 .reload .bitcoin-form {
@@ -855,6 +870,13 @@ section {
     margin: 20px auto;
     width: 55%;
 }
+.reload .bitcoin-form input,.reload .bitcoin-form select{
+    background: #ffffff1f;
+    color: #fff;
+    border-radius: 0px;
+    border: none;
+    height: 42px;
+}
 input:focus, textarea:focus, select:focus {
     border-color: #DB0038 !important;
     outline: 0 !important;
@@ -862,18 +884,19 @@ input:focus, textarea:focus, select:focus {
 }
 
 .reload-bitcoin-button {
-    background: #fffb00;
-    color: #000000;
+    background: linear-gradient(180deg, rgba(200,16,102,1) 0%, rgba(153,0,69,1) 100%);
+    color: #fff;
     padding: 12px 25px 12px 25px;
     white-space: nowrap;
     transition: 0.3s;
     font-size: 16px;
     width: 55%;
     display: inline-block;
+    font-family: 'Wonder Bar';
 }
 
 .redeem-button {
-    background: #fffb00;
+    background: #fff;
     color: #000000;
     padding: 12px 25px 12px 25px;
     white-space: nowrap;
@@ -881,6 +904,8 @@ input:focus, textarea:focus, select:focus {
     font-size: 16px;
     width: 100%;
     display: inline-block;
+    border: none;
+    font-family: 'Wonder Bar';
 }
 
 /*--------------------------------------------------------------
@@ -1015,18 +1040,19 @@ input:focus, textarea:focus, select:focus {
 # Counts
 --------------------------------------------------------------*/
 .redeems {
-    background: url("../img/counts-bg.jpg") center center no-repeat;
+    background: url("../img/redeem-bg.jpg") center center no-repeat;
     background-size: cover;
-    padding: 80px 0 0 0;
     position: relative;
 }
 
 .redeems h2 {
-    font-size: 49px;
-    line-height: 70px;
-    color: whitesmoke;
-    text-transform: uppercase;
+    font-size: 70px;
+    font-weight: 700;
+    line-height: 90px;
+    color: #fff;
+    font-family: 'Wonder Bar';
     text-align: center;
+    padding-top: 20px;
 }
 .invalid-feedback {
     text-align: left;
@@ -1038,16 +1064,16 @@ input:focus, textarea:focus, select:focus {
 }
 .redeems .redeem-form{
     text-align: center;
-    background: #ffffff1f;
+    background: linear-gradient(135deg, rgba(110,82,67,1) 0%, rgba(47,34,30,1) 100%);
     padding: 40px 24px;
     margin: 0px auto 150px auto;
-    width: 55%;
-    border: 1px solid #ff0;
+    width: 40%;
+    border: 5px solid #fff;
     border-radius: 8px;
     position: relative;
 }
 
-.redeems::before {
+/*.redeems::before {
     content: "";
     position: absolute;
     background: rgba(17, 17, 17, 0.9);
@@ -1055,7 +1081,7 @@ input:focus, textarea:focus, select:focus {
     right: 0;
     top: 0;
     bottom: 0;
-}
+}*/
 
 .redeems .title {
     position: relative;
@@ -1083,12 +1109,12 @@ input:focus, textarea:focus, select:focus {
     color: #fff;
 }
 
-@media (min-width: 1200px) {
+/*@media (min-width: 1200px) {
     .redeems {
         background-attachment: fixed;
     }
 }
-
+*/
 /*--------------------------------------------------------------
 # Portfolio
 --------------------------------------------------------------*/
@@ -1633,13 +1659,47 @@ input:focus, textarea:focus, select:focus {
 # Footer
 --------------------------------------------------------------*/
 #footer {
-    background: #0f0f0f;
+    background: url(../img/footer-bg.png) center center no-repeat;
+    background-size: cover;
+    position: relative;
     color: #fff;
     font-size: 14px;
     text-align: center;
     padding: 30px 0;
 }
+.footer-info ul {
+    display: inline-flex;
+}
+.footer-info ul li {
+    color: #fff;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 16px;
+}
+.footer-info p {
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+.copy-right{
+    color: #ffff00!important;
+}
+.social-info {
+    margin-bottom: 35px;
+}
 
+.footer-dragon {
+    position: relative;
+    top: -100px;
+}
+.footer-info ul li a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 6px;
+    margin-right: 6px;
+    font-size: 16px;
+    text-transform: uppercase;
+}
 #footer h3 {
     font-size: 36px;
     font-weight: 700;
@@ -1650,12 +1710,7 @@ input:focus, textarea:focus, select:focus {
     margin: 0 0 15px 0;
 }
 
-#footer p {
-    font-size: 15;
-    font-style: italic;
-    padding: 0;
-    margin: 0 0 40px 0;
-}
+
 
 #footer .social-links {
     margin: 0 0 40px 0;
@@ -1700,14 +1755,14 @@ input:focus, textarea:focus, select:focus {
 }
 
 .cash-app {
-    background-image: url(../img/cash-bg.png);
+    background-image: url(../img/reload-cash.png);
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
     max-width: 95%;
     margin: 0 auto;
     padding: 40px;
-    border: 1px solid #ff0;
+    border: 5px solid #fff;
     border-radius: 8px;
     box-shadow: 0px 4px 15px 4px #00000061;
     position: relative;
@@ -1737,14 +1792,14 @@ input:focus, textarea:focus, select:focus {
 }
 
 .bitcoin-bg {
-    background-image: url(../img/bitcoin-bg.png);
+    background-image: url(../img/bitcoin-cash.png);
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
     max-width: 95%;
     margin: 0 auto;
     padding: 40px;
-    border: 1px solid #ff0;
+    border: 5px solid #fff;
     border-radius: 8px;
     box-shadow: 0px 4px 15px 4px #00000061;
     position: relative;
