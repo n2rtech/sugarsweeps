@@ -222,7 +222,31 @@ class IndexController extends Controller
     }
 
     public function notifications(){
-        return view('frontend.notifications');
+        $notifications      = Notification::orderBy('id', 'desc')->where('receiver_id', Auth::user()->id)->orderBy('id', 'desc')->paginate(20);
+        foreach($notifications as $notification){
+
+            $notification->user = User::find($notification->receiver_id);
+
+            if($notification->type == 'account-created'){
+                $notification->data = GamingAccount::find($notification->gaming_account_id)->load('platform');
+            }
+
+            if($notification->type == 'credit-added'){
+                $notification->data = CreditRequest::find($notification->credit_request_id)->load('platform');
+            }
+
+
+            if($notification->type == 'redeem-done'){
+                $notification->data = RedeemRequest::find($notification->redeem_request_id)->load('platform');
+            }
+
+
+            if($notification->type == 'redeem-rejected'){
+                $notification->data = RedeemRequest::find($notification->redeem_request_id)->load('platform');
+            }
+
+        }
+        return view('frontend.notifications', compact('notifications'));
     }
 
     public function populate(Request $request)
