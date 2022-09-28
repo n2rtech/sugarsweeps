@@ -674,6 +674,7 @@ h6 {
 section {
     padding: 60px 0;
     overflow: hidden;
+    background: #000;
 }
 #games{
     background: url(../img/our-game-bg.jpg) top center;
@@ -965,7 +966,7 @@ input:focus, textarea:focus, select:focus {
     max-height: 180px;
     position: relative;
     right: 12%;
-    top: 47px;
+    top: 33px;
 }
 .credential-bg li {
     color: #fff;
@@ -1515,11 +1516,13 @@ input:focus, textarea:focus, select:focus {
 }
 
 .contact h2 {
-    font-size: 49px;
-    line-height: 70px;
-    color: whitesmoke;
-    text-transform: uppercase;
+    font-size: 70px;
+    font-weight: 700;
+    line-height: 90px;
+    color: #fff;
+    font-family: 'Wonder Bar';
     text-align: center;
+    padding-top: 20px;
 }
 
 .contact .info h4 {
@@ -1544,7 +1547,6 @@ input:focus, textarea:focus, select:focus {
 
 .contact .php-email-form {
     width: 100%;
-    background: #fff;
 }
 
 .contact .php-email-form .form-group {

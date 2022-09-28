@@ -17,16 +17,15 @@
                         <li><a @if(request()->is('/')) href="#reload" @else href="{{route('index')}}#reload" @endif>Reload</a></li>
                         <li><a @if(request()->is('/')) href="#redeem" @else href="{{route('index')}}#redeem" @endif>Redeem</a></li>
                         <li><a @if(request()->is('/')) href="#contact" @else href="{{route('index')}}#contact" @endif>Contact</a></li>
-
-                    </ul>
-                </nav><!-- .nav-menu -->
-                @guest
-                    <a href="{{ route('login') }}" class="get-started-btn scrollto">Login</a>
-                    <a href="{{ route('register') }}" class="btn-register">Register</a>
-                @endguest
+                    @guest
+                        <li><a href="{{ route('login') }}" class="get-started-btn scrollto">Login</a></li>
+                        <li><a href="{{ route('register') }}" class="btn-register">Register</a></li>
+                    @endguest
+                    
                 @auth
-                <button class="btn-logout dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa-regular fa-circle-user"></i> <span>{{ Auth::user()->name }}</span></button>
-                <div class="dropdown-menu">
+                <li class="ms-nav-item user-login mobile-menu dropdown">
+                    <a href="{{ route('home') }}" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="mdi mdi-account-circle-outline"></i>{{Auth::user()->firstname}} {{Auth::user()->lastname}}</a>
+                    <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{ route('settings') }}"><i class="fa fa-gear"></i>  Settings</a>
                     <a class="dropdown-item" href="{{ route('notifications') }}"><i class="fa fa-bell"></i>  Notifications</a>
                     <a class="dropdown-item" href="{{ route('transactions') }}"><i class="fa fa-dollar"></i>  Transactions</a>
@@ -37,9 +36,11 @@
                         @csrf
                     </form>
                   </div>
+                </li>
                 @endauth
+                </ul>
+                </nav><!-- .nav-menu --> 
             </div>
         </div>
-
     </div>
 </header><!-- End Header -->

@@ -8,66 +8,25 @@
         </div>
 
         <div class="row">
+            @foreach ($platforms as $platform)
             <div class="col-sm-6 mt-5">
-                <div class="game-pic"><img src="{{ asset('img/fire.png') }}" alt="Fire Kirin" class="img-responsive">
+                <div class="game-pic"><img src="{{ $platform->image }}" alt="{{ $platform->platform }}" class="img-responsive">
                     <span class="credential-bg">
                         <ul class="list-unstyled button-group text-center">
-                            <li><a href="#" class="btn btn-download">Download</a></li>
+                            <li><a href="{{ $platform->download_link }}" class="btn btn-download">Download</a></li>
+                            @auth
                             <li>
                                 <ul class="list-unstyled">
-                                    <li><strong>User:</strong><span>John</span></li>
-                                    <li><strong>User:</strong><span>John</span></li>
+                                    <li><strong>User: </strong><span>{{ getUsername($platform->id) }}</span></li>
+                                    <li><strong>Password: </strong><span>{{ getPassword($platform->id) }}</span></li>
                                 </ul>
                             </li>
+                            @endauth
                         </ul>
                     </span>
                 </div>
             </div>
-            <div class="col-sm-6 mt-5">
-                <div class="game-pic"><img src="{{ asset('img/fire.png') }}" alt="Fire Kirin" class="img-responsive">
-                    <span class="credential-bg">
-                        <ul class="list-unstyled button-group text-center">
-                            <li><a href="#" class="btn btn-download">Download</a></li>
-                            <li>
-                                <ul class="list-unstyled">
-                                    <li><strong>User:</strong><span>John</span></li>
-                                    <li><strong>User:</strong><span>John</span></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </span>
-                </div>
-            </div>
-            <div class="col-sm-6 mt-5">
-                <div class="game-pic"><img src="{{ asset('img/fire.png') }}" alt="Fire Kirin" class="img-responsive">
-                    <span class="credential-bg">
-                        <ul class="list-unstyled button-group text-center">
-                            <li><a href="#" class="btn btn-download">Download</a></li>
-                            <li>
-                                <ul class="list-unstyled">
-                                    <li><strong>User:</strong><span>John</span></li>
-                                    <li><strong>User:</strong><span>John</span></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </span>
-                </div>
-            </div>
-            <div class="col-sm-6 mt-5">
-                <div class="game-pic"><img src="{{ asset('img/fire.png') }}" alt="Fire Kirin" class="img-responsive">
-                    <span class="credential-bg">
-                        <ul class="list-unstyled button-group text-center">
-                            <li><a href="#" class="btn btn-download">Download</a></li>
-                            <li>
-                                <ul class="list-unstyled">
-                                    <li><strong>User:</strong><span>John</span></li>
-                                    <li><strong>User:</strong><span>John</span></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </span>
-                </div>
-            </div>
+            @endforeach           
         </div>
 </section>
 <!-- End Games Section -->
