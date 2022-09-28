@@ -134,7 +134,6 @@ h6 {
     transition: all 0.5s;
     z-index: 997;
     /* border-bottom: 1px solid rgba(255, 255, 255, 0.1); */
-    border-bottom: 1px solid #DB0038;
     background: #1E050B;
 }
 
@@ -237,7 +236,7 @@ h6 {
     color: rgba(255, 255, 255, 0.7);
     transition: 0.3s;
     font-size: 14px;
-    padding: 25px 3px;
+    padding: 30px 3px;
     font-weight: 600;
     font-family: "Open Sans", sans-serif;
 }
@@ -871,8 +870,15 @@ section {
     width: 55%;
 }
 .reload .bitcoin-form input,.reload .bitcoin-form select{
-    background: #ffffff1f;
-    color: #fff;
+    background: #eee;
+    color: #444;
+    border-radius: 0px;
+    border: none;
+    height: 42px;
+}
+.redeems .redeem-form input,.redeems .redeem-form select{
+    background: #eee;
+    color: #444;
     border-radius: 0px;
     border: none;
     height: 42px;
