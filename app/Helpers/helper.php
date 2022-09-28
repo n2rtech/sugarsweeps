@@ -52,7 +52,7 @@ if (!function_exists('getPasswordByUserId')) {
 if (!function_exists('getLatestAdminNotifications')) {
     function getLatestAdminNotifications()
     {
-        $notifications      = Notification::orderBy('id', 'desc')->where('receiver_id', 0)->orderBy('id', 'desc')->take(5)->get();
+        $notifications      = Notification::orderBy('id', 'desc')->where('receiver_id', 0)->orderBy('id', 'desc')->where('seen', 'no')->take(5)->get();
         foreach ($notifications as $notification) {
 
             $notification->user = User::find($notification->sender_id);
@@ -65,6 +65,13 @@ if (!function_exists('getLatestAdminNotifications')) {
                 $notification->data = RedeemRequest::find($notification->redeem_request_id)->load('platform');
             }
         }
+        return $notifications;
+    }
+}
+if (!function_exists('getLatestAdminNotificationsCount')) {
+    function getLatestAdminNotificationsCount()
+    {
+        $notifications      = Notification::orderBy('id', 'desc')->where('receiver_id', 0)->orderBy('id', 'desc')->where('seen', 'no')->count();
         return $notifications;
     }
 }

@@ -9,6 +9,7 @@ use App\Models\Notification;
 use App\Models\PaymentMethod;
 use App\Models\RedeemRequest;
 use App\Models\Setting;
+use App\Models\TransactionHistory;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -114,17 +115,16 @@ class IndexController extends Controller
             $credit->save();
 
             // Generate Notification
-
-            $notification                       = new Notification();
-            $notification->type                 = 'credit-requested';
-            $notification->sender               = 'player';
-            $notification->sender_id            = $id;
-            $notification->receiver_id          = 0;
-            $notification->credit_request_id    = $credit->id;
-            $notification->save();
-
-
-
+            $notification_exists =  Notification::where('type', 'credit-requested')->where('sender', 'player')->where('sender_id', $id)->where('credit_request_id', $credit->id)->exists();
+            if(!$notification_exists){
+                $notification                       = new Notification();
+                $notification->type                 = 'credit-requested';
+                $notification->sender               = 'player';
+                $notification->sender_id            = $id;
+                $notification->receiver_id          = 0;
+                $notification->credit_request_id    = $credit->id;
+                $notification->save();
+            }
 
         }else{
 
@@ -205,11 +205,13 @@ class IndexController extends Controller
     }
 
     public function terms(){
-        return view('frontend.terms-and-conditions');
+        $terms = Setting::where('type', 'terms-and-conditions')->value('value');
+        return view('frontend.terms-and-conditions', compact('terms'));
     }
 
     public function privacyPolicy(){
-        return view('frontend.privacy-policy');
+        $privacy = Setting::where('type', 'privacy-policy')->value('value');
+        return view('frontend.privacy-policy', compact('privacy'));
     }
 
     public function settings(){
@@ -219,11 +221,36 @@ class IndexController extends Controller
     }
 
     public function transactions(){
-        return view('frontend.transactions');
+        $histories = TransactionHistory::where('user_id', Auth::user()->id)->orderBy('id', 'desc')->paginate('20');
+        return view('frontend.transactions', compact('histories'));
     }
 
     public function notifications(){
-        return view('frontend.notifications');
+        $notifications      = Notification::orderBy('id', 'desc')->where('receiver_id', Auth::user()->id)->orderBy('id', 'desc')->paginate(20);
+        foreach($notifications as $notification){
+
+            $notification->user = User::find($notification->receiver_id);
+
+            if($notification->type == 'account-created'){
+                $notification->data = GamingAccount::find($notification->gaming_account_id)->load('platform');
+            }
+
+            if($notification->type == 'credit-added'){
+                $notification->data = CreditRequest::find($notification->credit_request_id)->load('platform');
+            }
+
+
+            if($notification->type == 'redeem-done'){
+                $notification->data = RedeemRequest::find($notification->redeem_request_id)->load('platform');
+            }
+
+
+            if($notification->type == 'redeem-rejected'){
+                $notification->data = RedeemRequest::find($notification->redeem_request_id)->load('platform');
+            }
+
+        }
+        return view('frontend.notifications', compact('notifications'));
     }
 
     public function populate(Request $request)

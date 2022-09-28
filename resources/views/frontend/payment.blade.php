@@ -135,7 +135,7 @@
         $(document).ready(function() {
             setInterval(function() {
                 checkPaymentStatus()
-            }, 2000);
+            }, 5000);
         });
     </script>
     <script>
