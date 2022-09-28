@@ -8,6 +8,7 @@ use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -85,6 +86,16 @@ class RegisterController extends Controller
         }
 
         $user->save();
+
+        $to_name        =  $user->name;
+        $to_email       =  $user->email;
+        $data_email     =  array("name"=> $user->name);
+
+        Mail::send("frontend.emails.welcome", $data_email, function($message) use ($to_name, $to_email) {
+            $message->to($to_email, $to_name)
+            ->subject("Welcome! Greetings from Sugarsweeps");
+            $message->from("websales9999@gmail.com","Sugarsweeps");
+        });
 
         $notification                       = new Notification();
         $notification->type                 = 'request-account';

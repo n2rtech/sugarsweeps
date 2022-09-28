@@ -13,6 +13,7 @@ use App\Models\TransactionHistory;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class IndexController extends Controller
 {
@@ -258,5 +259,18 @@ class IndexController extends Controller
         $id = Auth::user()->id;
         $username = GamingAccount::where('user_id', $id)->where('platform_id', $request->platform_id)->value('username');
         return response()->json(['success' => $username]);
+    }
+
+    public function email(){
+        $to_name    = 'Raman';
+        $to_email   = 'rc21292@gmail.com';
+        $data_email       = array("name"=>"Raman");
+
+        Mail::send("frontend.emails.welcome", $data_email, function($message) use ($to_name, $to_email) {
+            $message->to($to_email, $to_name)
+            ->subject("Welcome Mail from Sugarsweeps");
+            $message->from("websales9999@gmail.com","Sugarsweeps");
+        });
+        // return view('frontend.emails.welcome');
     }
 }
