@@ -9,7 +9,7 @@
 
         <div class="row">
             @foreach ($platforms as $platform)
-            <div class="col-sm-6 mt-5">
+            <div class="col-sm-6 text-center mt-5">
                 <div class="game-pic"><img src="{{ $platform->image }}" alt="{{ $platform->platform }}" class="img-responsive">
                     <span class="credential-bg">
                         <ul class="list-unstyled button-group text-center">
