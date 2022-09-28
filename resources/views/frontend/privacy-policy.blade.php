@@ -11,7 +11,7 @@
     </div>
     <div class="row mb-5">
         <div class="col-lg-10 col-md-10 align-items-stretch m-auto text-white">
-            {!! $terms['content'] !!}
+            {!! $privacy['content'] !!}
         </div>
     </div>
 </section>
