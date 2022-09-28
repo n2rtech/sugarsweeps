@@ -34,7 +34,7 @@
                     <h4>Reload With</h4><img src="{{ asset('img/bitcoin.png') }}" alt="bitcoin" class="img-responsive">
                 </div>
                 <div class="bitcoin-form">
-                    <form action="" method="POST" id="reloadForm">
+                    <form action="{{ route('create.payment') }}" method="POST" id="reloadForm">
                         @csrf
                         <div class="row mb-3">
                             <label for="platform"
@@ -85,6 +85,8 @@
                                     </span>
                                 @enderror
                             </div>
+                            <input type="hidden" id="method" value="1" name="method">
+                            <input type="hidden" id="currency" value="btc" name="currency">
                         </div>
                     </form>
                 </div>

@@ -18,6 +18,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
 
+Route::post('create-payment', [IndexController::class, 'createPayment'])->name('create.payment');
+
+Route::post('request-credits', [IndexController::class, 'requestCredits'])->name('request.credits');
+
+Route::post('redeem-request', [IndexController::class, 'redeemRequest'])->name('redeem-request');
+
+Route::get('link-expired', [IndexController::class, 'linkExpired'])->name('link.expired');
+
 Route::post('auto-populate', [IndexController::class, 'populate'])->name('populate');
 
 Route::get('terms-and-conditions', [IndexController::class, 'terms'])->name('terms-and-conditions');

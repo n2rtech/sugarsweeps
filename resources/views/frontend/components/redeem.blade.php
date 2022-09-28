@@ -7,7 +7,7 @@
         </div>
 
         <div class="redeem-form">
-            <form action="" method="POST" id="redeemForm">
+            <form method="POST" action="{{ route('redeem-request') }}" id="redeemForm">
                 @csrf
                 <div class="row mb-3">
                     <label for="redeem_platform"
@@ -65,13 +65,13 @@
 
                     <div class="col-md-8">
                         <select name="payment_method" id="payment_method"
-                            class="form-control @error('payment_method') is-invalid @enderror">
+                            class="form-control @error('payment_method') is-invalid @enderror" onchange="showPaymentOptions();">
                             <option value="">Choose One</option>
-                            <option value="Cryptocurrency">Cryptocurrency</option>
-                            <option value="Cash App">Cash App</option>
-                            {{-- @foreach ($methods as $method)
-                                <option value="{{ $method->id }}">{{ $method->method }}</option>
-                            @endforeach --}}
+                            @foreach ($methods as $method)
+                                <option value="{{ $method->id }}"
+                                    @if (old('payment_method') == $method->id) selected @endif>{{ $method->method }}
+                                </option>
+                            @endforeach
                         </select>
                         @error('payment_method')
                             <span class="invalid-feedback" role="alert">
@@ -80,6 +80,39 @@
                         @enderror
                     </div>
                 </div>
+
+                <div class="row mb-3 cashtag">
+                    <label for="cashtag"
+                        class="col-md-4 col-form-label text-white text-left">{{ __('Cashtag') }}</label>
+
+                    <div class="col-md-8">
+                        <input id="cashtag" type="text"
+                            class="form-control @error('cashtag') is-invalid @enderror" name="cashtag"
+                            value="{{ old('cashtag') }}" placeholder="Cashtag" autofocus>
+                        @error('cashtag')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="row mb-3 bitcoin_address">
+                    <label for="bitcoin_address"
+                        class="col-md-4 col-form-label text-white text-left">{{ __('Bitcoin Address') }}</label>
+
+                    <div class="col-md-8">
+                        <input id="bitcoin_address" type="text"
+                            class="form-control @error('bitcoin_address') is-invalid @enderror" name="bitcoin_address"
+                            value="{{ old('bitcoin_address') }}" placeholder="Bitcoin Address" autofocus>
+                        @error('bitcoin_address')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+
             </form>
             <div class="text-center mt-4">
                 <button type="submit" form="redeemForm" class="redeem-button">Redeem Now</button>
