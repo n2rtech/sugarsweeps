@@ -1790,12 +1790,12 @@ input:focus, textarea:focus, select:focus {
     text-align: center;
 }
 
-#registration, #login, #password-email, #reset-password, #confirm-password, #verify-email, #transactions, #settings, #notifications, #terms-and-conditions, #privacy-policy{
+#registration, #login, #password-email, #reset-password, #confirm-password, #verify-email, #transactions, #settings, #notifications, #terms-and-conditions, #privacy-policy, #payment{
     background: rgb(2, 0, 36);
     background: linear-gradient(270deg, rgba(2, 0, 36, 1) 0%, rgba(219, 0, 56, 1) 98%);
 }
 
-.registration h2, .login h2, #transactions h2, #settings h2, #notifications h2, #terms-and-conditions h2, #privacy-policy h2{
+.registration h2, .login h2, #transactions h2, #settings h2, #notifications h2, #terms-and-conditions h2, #privacy-policy h2, #payment h2{
     font-size: 34px;
     line-height: 70px;
     color: whitesmoke;
@@ -1803,12 +1803,12 @@ input:focus, textarea:focus, select:focus {
     text-align: center;
 }
 
-.registration .section-title, .login .section-title, #transactions .section-title, #settings .section-title, #notifications .section-title, #terms-and-conditions .section-title, #privacy-policy .section-title{
+.registration .section-title, .login .section-title, #transactions .section-title, #settings .section-title, #notifications .section-title, #terms-and-conditions .section-title, #privacy-policy .section-title, #payment .section-title{
    padding-bottom: 0;
    padding-top: 30px;
 }
 
-#registrationForm label, #loginForm label, #settings label{
+#registrationForm label, #loginForm label, #settings, #creditForm label{
     color: whitesmoke;
     font-size: 14px;
 }
@@ -1819,6 +1819,19 @@ input:focus, textarea:focus, select:focus {
     background-repeat: no-repeat;
     background-size: cover;
     max-width: 30%;
+    margin: 0 auto;
+    padding: 40px;
+    border: 1px solid #ff0;
+    border-radius: 8px;
+    box-shadow: 0px 4px 15px 4px #00000061;
+    position: relative;
+}
+.credit-bg {
+    background-image: url(../img/credit-bg.png);
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: 80%;
     margin: 0 auto;
     padding: 40px;
     border: 1px solid #ff0;
@@ -1915,4 +1928,27 @@ button:focus {
     border-radius: 8px;
     box-shadow: 0px 4px 15px 4px #00000061;
     position: relative;
+}
+#payment .section-title p {
+    margin-bottom: 25px;
+    color: #ffe000d1;
+    font-size: 15px;
+}
+#payment .section-title h2 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    position: relative;
+}
+#payment .input-group-prepend {
+    margin-right: -1px;
+    height: 38px;
+}
+#payment .input-group-text {
+    font-size: 28px;
+}
+#payment .input-group-append {
+    margin-right: -1px;
+    height: 38px;
 }

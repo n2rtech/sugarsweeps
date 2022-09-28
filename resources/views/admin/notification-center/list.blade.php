@@ -30,7 +30,7 @@
                     @endif
 
                     @if($notification->type == 'credit-requested')
-                        <li class="list-group-item"><a href="{{ route('admin.players.edit', $notification->user->id) }}">{{ $notification->user->name }}'s </a> {{ $notification->data->platform->platform }} account has been credited with ${{ $notification->data->amount }} credit. <span class="float-right badge badge-light">{{ Carbon\Carbon::parse($notification->created_at)->format('d-m-Y h:i:s') }}</span></li>
+                        <li class="list-group-item"><a href="{{ route('admin.players.edit', $notification->user->id) }}">{{ $notification->user->name }} </a> has requested to load credits worth ${{ $notification->data->amount }} in {{ $notification->data->platform->platform }} account. <span class="float-right badge badge-light">{{ Carbon\Carbon::parse($notification->created_at)->format('d-m-Y h:i:s') }}</span></li>
                     @endif
 
                     @if($notification->type == 'redeem-request')

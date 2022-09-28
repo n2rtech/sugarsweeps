@@ -28,7 +28,7 @@
 
   <!-- Template Main CSS File -->
   <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-
+    @yield('head')
 </head>
 
 <body>
