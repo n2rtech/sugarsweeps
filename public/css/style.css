@@ -1516,7 +1516,7 @@ input:focus, textarea:focus, select:focus {
     padding: 10px 12px;
 }
 
-.contact .php-email-form button[type="submit"] {
+.contact button[type="submit"] {
     background: #DB0038;
     border: 0;
     padding: 10px 30px;
@@ -1866,7 +1866,7 @@ input:focus, textarea:focus, select:focus {
 .alert {
     position: relative;
     padding: 0.75rem 1.25rem;
-    margin-top: 71px;
+    margin-top: 79px;
     margin-bottom: 0px;
     border: 1px solid transparent;
     border-radius: 0.25rem;
