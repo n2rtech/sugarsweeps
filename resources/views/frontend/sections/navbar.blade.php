@@ -12,26 +12,25 @@
 
                 <nav class="nav-menu d-none d-lg-block">
                     <ul>
-                        <li class="active"><a href="{{ route('index') }}">Home</a></li>
-                        <li><a @if(request()->is('/')) href="#games" @else href="{{route('index')}}#games" @endif>Games</a></li>
-                        <li><a @if(request()->is('/')) href="#reload" @else href="{{route('index')}}#reload" @endif>Reload</a></li>
-                        <li><a @if(request()->is('/')) href="#redeem" @else href="{{route('index')}}#redeem" @endif>Redeem</a></li>
-                        <li><a @if(request()->is('/')) href="#contact" @else href="{{route('index')}}#contact" @endif>Contact</a></li>
+                        <li class="active"><a href="{{ route('index') }}">home</a></li>
+                        <li><a @if(request()->is('/')) href="#games" @else href="{{route('index')}}#games" @endif>games</a></li>
+                        <li><a @if(request()->is('/')) href="#reload" @else href="{{route('index')}}#reload" @endif>reload</a></li>
+                        <li><a @if(request()->is('/')) href="#redeem" @else href="{{route('index')}}#redeem" @endif>redeem</a></li>
+                        <li><a @if(request()->is('/')) href="#contact" @else href="{{route('index')}}#contact" @endif>contact</a></li>
                     @guest
-                        <li><a href="{{ route('login') }}" class="get-started-btn scrollto">Login</a></li>
-                        <li><a href="{{ route('register') }}" class="btn-register">Register</a></li>
+                        <li><a href="{{ route('login') }}" class="get-started-btn scrollto">login</a></li>
+                        <li><a href="{{ route('register') }}" class="btn-register">register</a></li>
                     @endguest
                     
                 @auth
                 <li class="ms-nav-item user-login mobile-menu dropdown">
                     <a href="{{ route('home') }}" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="mdi mdi-account-circle-outline"></i>{{Auth::user()->firstname}} {{Auth::user()->lastname}}</a>
                     <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{{ route('settings') }}"><i class="fa fa-gear"></i>  Settings</a>
-                    <a class="dropdown-item" href="{{ route('notifications') }}"><i class="fa fa-bell"></i>  Notifications</a>
-                    <a class="dropdown-item" href="{{ route('transactions') }}"><i class="fa fa-dollar"></i>  Transactions</a>
+                    <a class="dropdown-item" href="{{ route('settings') }}"><i class="fa fa-gear"></i>  settings</a>
+                    <a class="dropdown-item" href="{{ route('notifications') }}"><i class="fa fa-bell"></i>  notifications</a>
+                    <a class="dropdown-item" href="{{ route('transactions') }}"><i class="fa fa-dollar"></i>  transactions</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();"><i class="fa fa-right-from-bracket"></i> Logout</a>
+                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-right-from-bracket"></i> logout</a>
                      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>

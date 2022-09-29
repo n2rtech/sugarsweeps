@@ -10,7 +10,7 @@
 --------------------------------------------------------------*/
 @font-face {
   font-family: 'Cocogoose Pro Bold';
-  src: url("../assets/fonts/Cocogoose-Pro-Bold.ttf");
+  src: url("../assets/fonts/cocogoose-regular.ttf");
   font-weight: 800;
   font-style: normal;
 }
@@ -172,43 +172,7 @@ h6 {
     max-height: 40px;
 }
 
-@media (max-width: 992px) {
-    #header {
-        border: 0;
-        padding: 15px 0;
-    }
 
-    .reload .cash-tag-description {
-        font-size: 15px !important;
-    }
-
-    .reload-bitcoin-button {
-        width: 100% !important;
-    }
-
-    .redeem-button {
-        width: 100% !important;
-    }
-
-    .reload .bitcoin-form {
-        width: 100% !important;
-    }
-
-    .redeems .redeem-form {
-        width: 100% !important;
-    }
-    .register-bg {
-        max-width: 80% !important;
-    }
-
-    .account-info {
-        max-width: 80% !important;
-    }
-
-    .change-password {
-        max-width: 80% !important;
-    }
-}
 
 /*--------------------------------------------------------------
 # Navigation Menu
@@ -219,7 +183,9 @@ h6 {
     padding: 0;
     list-style: none;
 }
-
+.navbar-brand{
+    padding: 10px 0;
+}
 .nav-menu>ul {
     display: flex;
 }
@@ -227,18 +193,19 @@ h6 {
 .nav-menu>ul>li {
     position: relative;
     white-space: nowrap;
-    margin: 0 12px;
 }
-
+.dropdown-menu a{
+    color: #000!important;
+}
 .nav-menu a {
     display: block;
     position: relative;
-    color: rgba(255, 255, 255, 0.7);
+    color: #ffffff;
     transition: 0.3s;
     font-size: 14px;
-    padding: 30px 3px;
     font-weight: 600;
-    font-family: "Open Sans", sans-serif;
+    font-family: 'Wonder Bar';
+    padding: 10px 20px;
 }
 
 .nav-menu>ul>li>a:before {
@@ -335,40 +302,28 @@ h6 {
     right: 15px;
 }
 
-@media (max-width: 1366px) {
-    .nav-menu .drop-down .drop-down ul {
-        left: -90%;
-    }
-
-    .nav-menu .drop-down .drop-down:hover>ul {
-        left: -100%;
-    }
-
-    .nav-menu .drop-down .drop-down>a:after {
-        content: "\ea9d";
-    }
-}
 
 .btn-register {
     font-weight: 600;
     font-size: 13px;
     padding: 8px 25px 9px 25px;
     transition: 0.3s;
-    color: #DB0038;
     animation-delay: 0.8s;
-    border: 2px solid #DB0038;
+    background: #fff;
+    color: #000!important;
+    margin-left: 25px;
 }
 
 .btn-register:hover {
-    background: #DB0038;
-    color: #fff;
+    background: linear-gradient(180deg, rgba(200,16,102,1) 0%, rgba(153,0,69,1) 100%);
+    color: #fff!important;
     text-decoration: none;
 }
 
 /* Get Startet Button */
 .get-started-btn {
     margin-left: 25px;
-    background: #DB0038;
+    background: linear-gradient(180deg, rgba(200,16,102,1) 0%, rgba(153,0,69,1) 100%);
     color: #fff;
     padding: 8px 25px 9px 25px;
     white-space: nowrap;
@@ -378,26 +333,11 @@ h6 {
 }
 
 .get-started-btn:hover {
-    background: #ffd400;
-    color: #fff;
+    background: #fff;
+    color: #000!important;
 }
 
-@media (max-width: 992px) {
-    .get-started-btn {
-        margin: 0px 0px 0 0;
-        padding: 6px 6px;
-    }
 
-    .btn-register {
-        margin: 0 45px 0 4px;
-        padding: 6px 6px;
-    }
-
-    .btn-logout {
-        margin: 0 45px 0 4px;
-        padding: 6px 6px;
-    }
-}
 
 /* Mobile Navigation */
 .mobile-nav-toggle {
@@ -421,18 +361,21 @@ h6 {
 
 .mobile-nav {
     position: fixed;
-    top: 55px;
+    top: 65px;
     right: 15px;
     bottom: 15px;
     left: 15px;
     z-index: 9999;
     overflow-y: auto;
-    background: #fff;
+    background: #1E050B;
     transition: ease-in-out 0.2s;
     opacity: 0;
     visibility: hidden;
-    border-radius: 10px;
+    border-radius: 0px;
     padding: 10px 0;
+}
+.mobile-nav ul{
+    padding: 0 25px;
 }
 
 .mobile-nav * {
@@ -440,21 +383,28 @@ h6 {
     padding: 0;
     list-style: none;
 }
-
 .mobile-nav a {
     display: block;
     position: relative;
-    color: #282828;
+    color: #fff!important;
     padding: 10px 20px;
     font-weight: 500;
     outline: none;
     text-align: center;
+    background: linear-gradient(180deg, rgba(200,16,102,1) 0%, rgba(153,0,69,1) 100%);
+    margin-bottom: 10px;
+    font-family: 'Wonder Bar';
+    border: 1px solid #fff;
+    border-radius: 50px;
+    font-size: 15px;
+
+
 }
 
 .mobile-nav a:hover,
 .mobile-nav .active>a,
 .mobile-nav li:hover>a {
-    color: #DB0038;
+    color: #fff;
     text-decoration: none;
 }
 
@@ -625,25 +575,6 @@ h6 {
     border-radius: 0;
 }
 
-/*@media (min-width: 1024px) {
-    #hero {
-        background-attachment: fixed;
-    }
-}*/
-
-@media (max-width: 768px) {
-    #hero h1 {
-        font-size: 28px;
-        line-height: 36px;
-    }
-
-    #hero h2 {
-        font-size: 18px;
-        line-height: 24px;
-        margin-bottom: 30px;
-    }
-}
-
 @-webkit-keyframes pulsate-btn {
     0% {
         transform: scale(0.6, 0.6);
@@ -680,6 +611,7 @@ section {
     background: url(../img/our-game-bg.jpg) top center;
     background-size: cover;
     position: relative;
+    background-repeat: no-repeat;
 }
 
 .section-bg {
@@ -988,19 +920,7 @@ input:focus, textarea:focus, select:focus {
     padding: 15px 65px;
     font-family: 'Wonder Bar';
 }
-@media (max-width: 1024px) {
-    .cta {
-        background-attachment: scroll;
-    }
-}
 
-@media (min-width: 769px) {
-    .cta .cta-btn-container {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-    }
-}
 
 /*--------------------------------------------------------------
 # Features
@@ -1151,12 +1071,7 @@ input:focus, textarea:focus, select:focus {
     color: #fff;
 }
 
-/*@media (min-width: 1200px) {
-    .redeems {
-        background-attachment: fixed;
-    }
-}
-*/
+
 /*--------------------------------------------------------------
 # Portfolio
 --------------------------------------------------------------*/
@@ -1472,30 +1387,7 @@ input:focus, textarea:focus, select:focus {
     display: none;
 }
 
-@media (max-width: 1024px) {
 
-    .faq .content,
-    .faq .accordion-list {
-        padding-left: 0;
-        padding-right: 0;
-    }
-}
-
-@media (max-width: 992px) {
-    .faq {
-        /* img {
-      padding-top: 30px;
-    } */
-    }
-
-    .faq .content {
-        padding-top: 30px;
-    }
-
-    .faq .accordion-list {
-        padding-bottom: 30px;
-    }
-}
 
 .invalid-feedback {
     display: block;
@@ -1667,11 +1559,6 @@ input:focus, textarea:focus, select:focus {
     margin-top: 72px;
 }
 
-@media (max-width: 992px) {
-    .breadcrumbs {
-        margin-top: 63px;
-    }
-}
 
 .breadcrumbs h2 {
     font-size: 26px;
@@ -2061,4 +1948,206 @@ button:focus {
 #payment .input-group-append {
     margin-right: -1px;
     height: 38px;
+}
+/*--------------
+Responsive
+--------------*/
+@media (max-width: 768px) {
+    #hero h1 {
+      font-size: 36px;
+      line-height: 52px;
+    }
+    .reload h2{
+        font-size: 36px;
+        line-height: 52px;
+    }
+    .redeems h2{
+        font-size: 36px;
+        line-height: 52px;
+    }
+    .contact h2{
+        font-size: 36px;
+        line-height: 52px;
+    }
+    .game-pic {
+      display: inline-grid;
+    }
+    .footer-info ul li a {
+      font-size: 12px;
+    }
+    .footer-info p {
+      font-size: 13px;
+    }
+    section {
+      padding: 35px 0;
+      overflow: hidden;
+      background: #000;
+    }
+    .credential-bg {
+      right: 0;
+      top: -75px;
+      width: 80%;
+      margin: 0 auto;
+      padding: 0;
+      max-height: 210px;
+      border: none;
+    }
+    .btn-download {
+      padding: 8px 30px;
+      font-size: 12px;
+    }
+    .section-title {
+      padding-bottom: 0px;
+    }
+    .credential-bg .button-group {
+      padding-left: 0px;
+      padding-right: 0px;
+      padding-top: 85px;
+    }
+    .dropdown-menu {
+      min-width: 100%;
+      margin-top: 9px;
+      background: #1e050b;
+    }
+    .dropdown-divider{
+        display: none;
+    }
+    .game h2 {
+      font-size: 35px;
+      line-height: 35px;
+      padding-top: 0px;
+    }
+    .section-title p {
+      font-size: 13px;
+      font-weight: 600;
+    }
+    #hero {
+      background: url("../img/mob-hero-bg.jpg") top center;
+      background-size: cover;
+      position: relative;
+    }
+    #games {
+        background: url(../img/mob-our-game-bg.jpg) top center;
+        background-size: cover;
+        position: relative;
+        background-repeat: no-repeat;
+    }
+    #reload{
+        background: url(../img/mob-reload-bg.jpg) top center;
+        background-size: cover;
+        position: relative;
+        background-repeat: no-repeat;
+    }
+    .redeems{
+        background: url(../img/mob-redeem-bg.jpg) top center;
+        background-size: cover;
+        position: relative;
+        background-repeat: no-repeat;
+        height: 1350px;
+    }
+    #footer{
+        background: url(../img/mob-footer-bg.jpg) top center;
+        background-size: cover;
+        position: relative;
+        background-repeat: no-repeat;
+    }
+    #hero h2 {
+        font-size: 18px;
+        line-height: 24px;
+        margin-bottom: 30px;
+    }
+    .navbar-brand img{
+        max-width: 85%;
+    }
+    .mobile-nav-toggle {
+      padding: 6px 11px;
+      background: #8f0035;
+      border-radius: 4px;
+    }
+}
+
+@media (max-width: 992px) {
+    #header {
+        border: 0;
+        padding: 0;
+    }
+    .breadcrumbs {
+        margin-top: 63px;
+    }
+    .faq .content {
+        padding-top: 30px;
+    }
+
+    .faq .accordion-list {
+        padding-bottom: 30px;
+    }
+    .reload .cash-tag-description {
+        font-size: 15px !important;
+    }
+
+    .reload-bitcoin-button {
+        width: 100% !important;
+    }
+
+    .redeem-button {
+        width: 100% !important;
+    }
+
+    .reload .bitcoin-form {
+        width: 100% !important;
+    }
+
+    .redeems .redeem-form {
+        width: 100% !important;
+    }
+    .register-bg {
+        max-width: 80% !important;
+    }
+
+    .account-info {
+        max-width: 80% !important;
+    }
+
+    .change-password {
+        max-width: 80% !important;
+    }
+
+    .btn-logout {
+        margin: 0 45px 0 4px;
+        padding: 6px 6px;
+    }
+}
+@media (max-width: 1366px) {
+    .nav-menu .drop-down .drop-down ul {
+        left: -90%;
+    }
+
+    .nav-menu .drop-down .drop-down:hover>ul {
+        left: -100%;
+    }
+
+    .nav-menu .drop-down .drop-down>a:after {
+        content: "\ea9d";
+    }
+}
+@media (max-width: 1024px) {
+    .cta {
+        background-attachment: scroll;
+    }
+}
+
+@media (min-width: 769px) {
+    .cta .cta-btn-container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+}
+@media (max-width: 1024px) {
+
+    .faq .content,
+    .faq .accordion-list {
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
