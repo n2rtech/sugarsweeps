@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\ChangePasswordController;
 use App\Http\Controllers\Auth\MyAccountController;
 use App\Http\Controllers\IndexController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,10 +43,19 @@ Route::get('/', [IndexController::class, 'index'])->name('index');
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::redirect('/home', '/')->name('home');
 
 Route::resource('my-account', MyAccountController::class);
 
 Route::post('change-password', [ChangePasswordController::class,'changePassword'])->name('change-password');
 
 Route::get('test-email', [IndexController::class, 'email']);
+
+Route::get('refresh-database', function () {
+
+    Artisan::call('migrate:fresh');
+    Artisan::call('db:seed');
+
+    dd("Hello ! Database has been refresed and sample data has been inserted!");
+
+});
