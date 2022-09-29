@@ -274,7 +274,7 @@ class IndexController extends Controller
 
         Mail::send("frontend.emails.contact", $data_email, function($message) use ($to_name, $to_email) {
             $message->to($to_email, $to_name)
-            ->subject("Welcome Mail from Sugarsweeps");
+            ->subject("New Query from Sugarsweeps");
             $message->from("stakesdragon7@gmail.com","Sugarsweeps");
         });
         return redirect()->route('index')->with('success', 'Thank you for contacting with us!');

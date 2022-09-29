@@ -44,11 +44,11 @@
                              border: none;
                              background-color: white;">
             <h2 style="text-align: center;
-                                 align-items: center;font-family: system-ui;"> {{ $subject }} </h2>
+                                 align-items: center;font-family: system-ui;">Subject: {{ $subject }} </h2>
             <p class="data" style="text-align: center;
                                 align-items: center;
                                 font-size: 15px;
-                                padding-bottom: 12px;font-family: system-ui;"> {!! $messag !!}</p>
+                                padding-bottom: 12px;font-family: system-ui;">Message: {!! $messag !!}</p>
             <p style="text-align: center">
               <a href="{{ route('login') }}" style="text-decoration: none;
                                     color:black;
