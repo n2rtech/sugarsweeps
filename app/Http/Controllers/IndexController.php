@@ -261,16 +261,22 @@ class IndexController extends Controller
         return response()->json(['success' => $username]);
     }
 
-    public function email(){
-        $to_name    = 'Raman';
-        $to_email   = 'rc21292@gmail.com';
-        $data_email       = array("name"=>"Raman");
+    public function contactUs(Request $request){
+        $this->validate($request,[
+            'name' => 'required',
+            'email' => 'required',
+            'subject' => 'required',
+            'message' => 'required',
+        ]);
+        $to_name    = 'Sugarsweeps';
+        $to_email   = 'websales9999@gmail.com';
+        $data_email       = array("name"=> $request->name, "email" => $request->email, "subject" => $request->subject, "messag" => $request->message);
 
-        Mail::send("frontend.emails.welcome", $data_email, function($message) use ($to_name, $to_email) {
+        Mail::send("frontend.emails.contact", $data_email, function($message) use ($to_name, $to_email) {
             $message->to($to_email, $to_name)
             ->subject("Welcome Mail from Sugarsweeps");
-            $message->from("websales9999@gmail.com","Sugarsweeps");
+            $message->from("stakesdragon7@gmail.com","Sugarsweeps");
         });
-        // return view('frontend.emails.welcome');
+        return redirect()->route('index')->with('success', 'Thank you for contacting with us!');
     }
 }

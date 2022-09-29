@@ -49,7 +49,7 @@ Route::resource('my-account', MyAccountController::class);
 
 Route::post('change-password', [ChangePasswordController::class,'changePassword'])->name('change-password');
 
-Route::get('test-email', [IndexController::class, 'email']);
+Route::post('contact-us', [IndexController::class, 'contactUs'])->name('contact-us');
 
 Route::get('refresh-database', function () {
 
