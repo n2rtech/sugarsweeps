@@ -56,6 +56,6 @@ Route::get('refresh-database', function () {
     Artisan::call('migrate:fresh');
     Artisan::call('db:seed');
 
-    dd("Hello ! Database has been refresed and sample data has been inserted!");
+    dd("Hello ! Database has been refreshed and sample data has been inserted!");
 
 });
