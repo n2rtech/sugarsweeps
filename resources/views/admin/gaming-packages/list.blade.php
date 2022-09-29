@@ -13,7 +13,7 @@
             <div class="form-group breadcrum-right">
                 <div class="dropdown">
                     <a class="btn btn-info btn-md waves-effect waves-light"
-                        href="{{ route('admin.gaming-packages.import') }}">Import</a>
+                        href="{{ route('admin.gaming-packages.import-export') }}">Import</a>
                     <a class="btn btn-dark btn-md waves-effect waves-light"
                         href="{{ route('admin.gaming-packages.create') }}">Create</a>
                 </div>
