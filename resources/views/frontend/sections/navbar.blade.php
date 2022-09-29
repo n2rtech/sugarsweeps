@@ -21,16 +21,16 @@
                         <li><a href="{{ route('login') }}" class="get-started-btn scrollto">login</a></li>
                         <li><a href="{{ route('register') }}" class="btn-register">register</a></li>
                     @endguest
-                    
+
                 @auth
                 <li class="ms-nav-item user-login mobile-menu dropdown">
-                    <a href="{{ route('home') }}" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="mdi mdi-account-circle-outline"></i>{{Auth::user()->firstname}} {{Auth::user()->lastname}}</a>
+                    <a href="{{ route('home') }}" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-circle-user"></i> {{Auth::user()->name}}</a>
                     <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{ route('settings') }}"><i class="fa fa-gear"></i>  settings</a>
                     <a class="dropdown-item" href="{{ route('notifications') }}"><i class="fa fa-bell"></i>  notifications</a>
                     <a class="dropdown-item" href="{{ route('transactions') }}"><i class="fa fa-dollar"></i>  transactions</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-right-from-bracket"></i> logout</a>
+                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-right-from-bracket"></i> Logout</a>
                      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
@@ -38,7 +38,7 @@
                 </li>
                 @endauth
                 </ul>
-                </nav><!-- .nav-menu --> 
+                </nav><!-- .nav-menu -->
             </div>
         </div>
     </div>

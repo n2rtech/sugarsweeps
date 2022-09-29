@@ -53,7 +53,7 @@
                 </div>
             @else
                 <div class="table-responsive">
-                    <p class="text-center">No Notifications found.</p>
+                    <p class="text-center text-white">No Notifications found.</p>
                 </div>
             @endif
         </div>
