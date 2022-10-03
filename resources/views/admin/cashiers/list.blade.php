@@ -30,7 +30,7 @@
                         <div class="form-row">
                             <div class="col-xl-3 col-md-12">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" id="name" placeholder="Vendor"
+                                    <input type="text" class="form-control" id="name" placeholder="Cashier"
                                         name="name" value="{{ $filter_name }}">
                                 </div>
                             </div>
