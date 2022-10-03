@@ -468,9 +468,17 @@ h6 {
     background: url("../img/hero-bg.jpg") top center;
     background-size: cover;
     position: relative;
-    height: 680px;
 }
-
+#hero .title-style{
+    max-width: 70%;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 250px
+}
+#hero img{
+    padding-top: 50px;
+    padding-bottom: 20px
+}
 /*#hero:before {
     content: "";
     background: rgba(0, 0, 0, 0.6);
