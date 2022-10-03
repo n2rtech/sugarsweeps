@@ -153,7 +153,7 @@
             $.ajax(settings).done(function(response) {
                 console.log(response.payment_status);
 
-                if ((response.payment_status == 'confirmed') || (response.payment_status == 'finished') || (response.payment_status == 'waiting')) {
+                if ((response.payment_status == 'confirmed') || (response.payment_status == 'finished')) {
                     $('#creditForm').submit();
                 }
             });
