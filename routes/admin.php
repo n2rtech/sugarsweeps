@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\Auth\ForgotPasswordController;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\Auth\MyAccountController;
 use App\Http\Controllers\Admin\Auth\ResetPasswordController;
+use App\Http\Controllers\Admin\BulkEmailController;
 use App\Http\Controllers\Admin\CashierController;
 use App\Http\Controllers\Admin\CreditRequestController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -183,4 +184,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('term-setting', [SettingController::class, 'termSetting'])->name('term-setting.form');
 
     Route::post('term-setting', [SettingController::class, 'saveTermSetting'])->name('save-term-setting');
+
+    Route::resource('bulk-emails', BulkEmailController::class);
+
+
 });

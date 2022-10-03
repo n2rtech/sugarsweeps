@@ -42,6 +42,8 @@
 
             <li class="nav-item {{ request()->is('admin/payment-methods') || request()->is('admin/payment-methods/*') ? 'active' : '' }}"><a href="{{ route('admin.payment-methods.index') }}"><i class="feather icon-server"></i><span class="menu-title" data-i18n="Payment Methods">Payment Methods</span></a></li>
 
+            <li class="nav-item {{ request()->is('admin/bulk-emails') || request()->is('admin/bulk-emails/*') ? 'active' : '' }}"><a href="{{ route('admin.bulk-emails.index') }}"><i class="feather icon-mail"></i><span class="menu-title" data-i18n="Bulk Emails">Bulk Emails</span></a></li>
+
             <li class="nav-item {{ request()->is('admin/change-password') || request()->is('admin/my-account/*') ? 'has-sub sidebar-group-active open' : '' }}"><a href="#"><i class="feather icon-settings"></i><span class="menu-title" data-i18n="Settings">Settings</span></a>
                 <ul class="menu-content">
                     <li class="{{ request()->is('admin/privacy-setting') ? 'active' : '' }}"><a href="{{ route('admin.privacy-setting.form') }}"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Privacy Page">Privacy Page</span></a>
