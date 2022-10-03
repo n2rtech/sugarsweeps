@@ -128,16 +128,16 @@
                                             @endif
                                             @if ($history->type == 'redeemed')
                                                 <td>
-                                                    <span class="text-danger">Username:</span> <span class="float-right">
+                                                    <span class="text-danger">Username:</span> <br><span>
                                                         {{ $redeem_request->username }}</span><br>
-                                                    <span class="text-danger">Password:</span> <span class="float-right">
+                                                    <span class="text-danger">Password:</span><br> <span>
                                                         {{ getPasswordByUserId($redeem_request->user_id, $redeem_request->platform_id) }}</span><br>
                                                 </td>
                                             @else
                                                 <td>
-                                                    <span class="text-danger">Username:</span> <span class="float-right">
+                                                    <span class="text-danger">Username:</span><br> <span>
                                                         {{ $credit_request->username }}</span><br>
-                                                    <span class="text-danger">Password:</span> <span class="float-right">
+                                                    <span class="text-danger">Password:</span> <br><span>
                                                         {{ getPasswordByUserId($credit_request->user_id, $credit_request->platform_id) }}</span><br>
                                                 </td>
                                             @endif
