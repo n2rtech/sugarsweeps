@@ -3,8 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cashier;
+use App\Models\GamingPlatform;
+use App\Models\PaymentMethod;
 use App\Models\TransactionHistory;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TransactionHistoryController extends Controller
 {
@@ -17,10 +22,70 @@ class TransactionHistoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $histories = TransactionHistory::latest()->paginate('20');
-        return view('admin.transaction-history', compact('histories'));
+
+        $filter_box         = 'hide';
+        $date               = $request->date;
+        $name               = $request->name;
+        $email              = $request->email;
+        $phone              = $request->phone;
+        $gaming_platform    = $request->platform;
+        $payment_method     = $request->payment_method;
+        $request_cashier    = $request->cashier;
+        $request_status     = $request->status;
+        $period             = $request->period;
+
+        if(isset($date) || isset($name) || isset($email) || isset($phone) || isset($gaming_platform) || isset($amount) || isset($username)|| isset($request_cashier)|| isset($request_status) || isset($period)){
+            $filter_box = 'show';
+        }
+
+
+        $histories = TransactionHistory::query();
+
+        if($request->has('id')){
+            $histories->where('id', $request->id);
+        }
+
+        if(isset($name)){
+            $histories->whereHas('user', function ($query) use ($name){
+                $query->where(DB::raw("concat(firstname, ' ', lastname)"), 'LIKE', "%".$name."%");
+            });
+        }
+
+        if(isset($email)){
+            $histories->whereHas('user', function ($query) use ($email){
+                $query->where('email', $email);
+            });
+        }
+
+        if(isset($phone)){
+            $histories->whereHas('user', function ($query) use ($phone){
+                $query->where('phone', $phone);
+            });
+        }
+
+
+        if(isset($payment_method)){
+            $histories->where('mode', $payment_method);
+        }
+
+        if(isset($request_cashier)){
+            $histories->where('cashier_id', $request_cashier);
+        }
+
+        if(isset($request_status)){
+            $histories->where('type', $request_status);
+        }
+
+        if(isset($date)){
+            $histories->whereDate('created_at', $date);
+        }
+        $histories  = $histories->latest()->paginate('20');
+        $methods    = PaymentMethod::get(['id', 'method']);
+        $cashiers   = Cashier::get(['id', 'name']);
+
+        return view('admin.transaction-history', compact('histories', 'cashiers', 'methods', 'date', 'name', 'email', 'phone', 'payment_method', 'request_cashier', 'request_status'));
     }
 
     /**

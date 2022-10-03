@@ -15,6 +15,79 @@
         <div class="card">
             <div class="card-content">
                 <div class="card-body">
+                    <div class="col-md-12" id="filterBox">
+                        <form action="{{ route('admin.transaction-history.index') }}">
+                            <div class="form-row">
+                                <div class="col-xl-2 col-md-12 mb-1">
+                                    <div class="input-group">
+                                        <input type="name" name="name" class="form-control" placeholder="Player"
+                                            value="{{ $name }}">
+                                    </div>
+                                </div>
+                                <div class="col-xl-2 col-md-12 mb-1">
+                                    <div class="input-group">
+                                        <input type="email" name="email" class="form-control" placeholder="Email"
+                                            value="{{ $email }}">
+                                    </div>
+                                </div>
+                                <div class="col-xl-2 col-md-12 mb-1">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="phone" placeholder="Phone number"
+                                            name="phone" value="{{ $phone }}">
+                                    </div>
+                                </div>
+                                <div class="col-xl-2 col-md-12 mb-1">
+                                    <div class="input-group">
+                                        <select class="form-control" name="request_cashier" id="request_cashier">
+                                            <option value="">Select Cashier</option>
+                                            @foreach ($cashiers as $cashier)
+                                                <option {{ $cashier->id }}
+                                                    @if ($request_cashier == $cashier->id) selected @endif>
+                                                    {{ $cashier->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-2 col-md-12 mb-1">
+                                    <div class="input-group">
+                                        <select class="form-control" id="status" name="status">
+                                            <option value="" selected>Type</option>
+                                            <option value="redeemed" {{ $request_status == 'redeemed' ? 'selected' : '' }}>
+                                                Redeemed</option>
+                                            <option value="purchased" {{ $request_status == 'purchased' ? 'selected' : '' }}>
+                                                Purchased</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-2 col-md-12 mb-1">
+                                    <div class="input-group">
+                                        <select id="payment_method" class="form-control" name="payment_method" autofocus>
+                                            <option value="" selected>Payout Method</option>
+                                            @foreach ($methods as $method)
+                                                <option value="{{ $method->method }}"
+                                                    @if ($payment_method == $method->method) selected @endif>
+                                                    {{ $method->method }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xl-2 col-md-12 mb-1">
+                                    <input type="date" name="date" class="form-control" placeholder="Date"
+                                        value="{{ $date }}">
+                                </div>
+                                <div class="col-xl-10 col-md-12 text-right">
+                                    <button class="btn btn-md btn-secondary" type="submit"><i
+                                            class="feather icon-search"></i></i></button>
+                                    <a href="{{ route('admin.transaction-history.index') }}" class="btn btn-md btn-warning"
+                                        type="submit"><i class="feather icon-refresh-cw"></i></a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="card-body">
                     @if (count($histories) > 0)
                         <div class="table-responsive">
                             <table class="table table-centered mb-0">
@@ -23,6 +96,8 @@
                                         <th class="date-width">Date & Time</th>
                                         <th>Cashier</th>
                                         <th>Player</th>
+                                        <th>Email</th>
+                                        <th class="text-center">Phone</th>
                                         <th>Game</th>
                                         <th>Game Credentials</th>
                                         <th>Amount</th>
@@ -52,6 +127,8 @@
                                                     Null
                                                 @endisset
                                             </td>
+                                            <td>{{ $history->user->email }}</td>
+                                            <td class="text-center">{{ $history->user->phone }}</td>
                                             @if ($history->type == 'redeemed')
                                                 <td>{{ $redeem_request->platform->platform }}</td>
                                             @else

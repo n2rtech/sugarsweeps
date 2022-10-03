@@ -9,7 +9,7 @@
                 </div>
             </div>
         </div>
-        <div class="content-header-right text-md-right col-md-3 col-12 d-md-block d-none">
+        <div class="content-header-right text-md-right col-md-3 col-12">
             <div class="form-group breadcrum-right">
                 <div class="dropdown">
                     <a href="javascript:void(0)" id="filter"
@@ -26,19 +26,19 @@
                     <div class="col-md-12" id="filterBox">
                         <form action="{{ route('admin.deposit-requests.index') }}">
                             <div class="form-row">
-                                <div class="col-xl-2 col-md-12">
+                                <div class="col-xl-2 col-md-12 mb-1">
                                     <div class="input-group">
                                         <input type="text" class="form-control" id="filter_name" placeholder="Player"
                                             name="filter_name" value="{{ $filter_name }}">
                                     </div>
                                 </div>
-                                <div class="col-xl-2 col-md-12">
+                                <div class="col-xl-2 col-md-12 mb-1">
                                     <div class="input-group">
                                         <input type="text" class="form-control" id="filter_phone"
                                             placeholder="Phone number" name="filter_phone" value="{{ $filter_phone }}">
                                     </div>
                                 </div>
-                                <div class="col-xl-2 col-md-12">
+                                <div class="col-xl-2 col-md-12 mb-1">
                                     <div class="input-group">
                                         <select class="form-control" name="filter_cashier" id="filter_cashier">
                                             <option value="">Select Cashier</option>
@@ -50,7 +50,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-xl-2 col-md-12">
+                                <div class="col-xl-2 col-md-12 mb-1">
                                     <div class="input-group">
                                         <select class="form-control" name="filter_platform" id="filter_platform">
                                             <option value="" selected>Select Platform</option>
@@ -62,7 +62,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-xl-2 col-md-12">
+                                <div class="col-xl-2 col-md-12 mb-1">
                                     <div class="input-group">
                                         <select class="form-control" id="filter_status" name="filter_status">
                                             <option value="" selected>Select Status</option>
@@ -73,7 +73,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-xl-2 col-md-12 text-right">
+                                <div class="col-xl-2 col-md-12 mb-1 text-right">
                                     <button class="btn btn-md btn-secondary" type="submit"><i
                                             class="feather icon-search"></i></i></button>
                                     <a href="{{ route('admin.deposit-requests.index') }}" class="btn btn-md btn-warning"
