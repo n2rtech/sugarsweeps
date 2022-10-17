@@ -1,4 +1,4 @@
-image: gitlab.n2rtechnologies.com:5050/rc21292/daltontvcrm
+image: gitlab.n2rtechnologies.com:5050/nurulhasan/sugarsweeps
 
 services:
   - mysql:5.7
