@@ -73,7 +73,7 @@ class IndexController extends Controller
             "ipn_callback_url": "https://nowpayments.io"
         }',
           CURLOPT_HTTPHEADER => array(
-            'x-api-key: 9KCBP26-9XF4MG6-PJR8FXM-MY1XC19',
+            'x-api-key: 2M26KTF-S5E4487-JD4E6Y7-8816EGW',
             'Content-Type: application/json'
           ),
         ));
